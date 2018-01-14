@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view nodetheme="Martha">
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="Bike"/>
+   <type name="bikePreference"/>
+   <type name="bikeSharing"/>
+   <type name="bikeSharingPreference"/>
+   <type name="Car"/>
+   <type name="carPreference"/>
+   <type name="carSharing"/>
+   <type name="carSharingPreference"/>
+   <type name="Foot"/>
+   <type name="footPreference"/>
+   <type name="Int"/>
+   <type name="Public"/>
+   <type name="publicPreference"/>
+   <type name="String"/>
+   <type name="Taxi"/>
+   <type name="taxiPreference"/>
+   <type name="univ"/>
+   <type name="boolean/False"/>
+   <type name="boolean/True"/>
+   <type name="seq/Int"/>
+   <set name="$changeTravelTransport_new_mean" type="Transport"/>
+   <set name="$changeTravelTransport_s" type="Schedule"/>
+   <set name="$changeTravelTransport_t" type="Travel"/>
+   <set name="$changeTravelTransport_t&apos;" type="Travel"/>
+</node>
+
+<node color="Green">
+   <type name="Preference"/>
+</node>
+
+<node color="Yellow">
+   <type name="Transport"/>
+</node>
+
+<node shape="Box" color="Gray">
+   <type name="Schedule"/>
+</node>
+
+<node shape="Ellipse" color="Blue">
+   <type name="Booking"/>
+</node>
+
+<node shape="Inv Trapezoid" color="White">
+   <type name="Travel"/>
+</node>
+
+<node shape="Lined Diamond" color="Black">
+   <type name="User"/>
+</node>
+
+<node shape="Parallelogram" color="Red">
+   <type name="Event"/>
+</node>
+
+<node visible="no">
+   <type name="boolean/Bool"/>
+</node>
+
+<edge attribute="no">
+   <relation name="mean"> <type name="Travel"/> <type name="Transport"/> </relation>
+   <relation name="to"> <type name="Travel"/> <type name="Event"/> </relation>
+</edge>
+
+<edge color="Gray" visible="no" attribute="yes" constraint="no">
+   <relation name="active"> <type name="Event"/> <type name="boolean/Bool"/> </relation>
+</edge>
+
+<edge visible="no">
+   <relation name="$changeTravelTransport_e1"> <type name="Travel"/> <type name="Event"/> </relation>
+   <relation name="$changeTravelTransport_e2"> <type name="Travel"/> <type name="Event"/> </relation>
+</edge>
+
+<edge visible="no" attribute="yes">
+   <relation name="cost"> <type name="bikeSharing"/> <type name="Int"/> </relation>
+   <relation name="cost"> <type name="carSharing"/> <type name="Int"/> </relation>
+   <relation name="cost"> <type name="Public"/> <type name="Int"/> </relation>
+   <relation name="cost"> <type name="Taxi"/> <type name="Int"/> </relation>
+   <relation name="distance"> <type name="Bike"/> <type name="Int"/> </relation>
+   <relation name="distance"> <type name="bikeSharing"/> <type name="Int"/> </relation>
+   <relation name="distance"> <type name="Car"/> <type name="Int"/> </relation>
+   <relation name="distance"> <type name="carSharing"/> <type name="Int"/> </relation>
+   <relation name="distance"> <type name="Foot"/> <type name="Int"/> </relation>
+   <relation name="end"> <type name="Event"/> <type name="Int"/> </relation>
+   <relation name="end"> <type name="Travel"/> <type name="Int"/> </relation>
+   <relation name="id"> <type name="User"/> <type name="Int"/> </relation>
+   <relation name="maxChanges"> <type name="publicPreference"/> <type name="Int"/> </relation>
+   <relation name="maxCost"> <type name="bikeSharingPreference"/> <type name="Int"/> </relation>
+   <relation name="maxCost"> <type name="carSharingPreference"/> <type name="Int"/> </relation>
+   <relation name="maxCost"> <type name="publicPreference"/> <type name="Int"/> </relation>
+   <relation name="maxCost"> <type name="taxiPreference"/> <type name="Int"/> </relation>
+   <relation name="maxDistance"> <type name="bikePreference"/> <type name="Int"/> </relation>
+   <relation name="maxDistance"> <type name="bikeSharingPreference"/> <type name="Int"/> </relation>
+   <relation name="maxDistance"> <type name="footPreference"/> <type name="Int"/> </relation>
+   <relation name="minDistance"> <type name="carPreference"/> <type name="Int"/> </relation>
+   <relation name="minDistance"> <type name="carSharingPreference"/> <type name="Int"/> </relation>
+   <relation name="nChanges"> <type name="Public"/> <type name="Int"/> </relation>
+   <relation name="start"> <type name="Event"/> <type name="Int"/> </relation>
+   <relation name="start"> <type name="Travel"/> <type name="Int"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

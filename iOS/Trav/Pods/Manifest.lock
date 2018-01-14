@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.6.0)
+  - CropViewController (2.3.6)
+  - JTAppleCalendar (7.1.5)
+  - KeychainSwift (10.0.0)
+  - Nimble (7.0.3)
+  - Quick (1.2.0)
+  - SwiftDate (4.5.1)
+  - UberCore (0.8.0)
+  - UberRides (0.8.0):
+    - UberCore
+
+DEPENDENCIES:
+  - Alamofire
+  - CropViewController
+  - JTAppleCalendar
+  - KeychainSwift
+  - Nimble
+  - Quick
+  - SwiftDate
+  - UberRides
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
+  JTAppleCalendar: 2d4f974f9f3c8b4964d51ca1f6e004883c031fbe
+  KeychainSwift: f9f7910449a0c0fd2cabc889121530dd2c477c33
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
+  UberCore: 51339cc32d042e97f4296c9b17b31b303a6ec58b
+  UberRides: 0785fd85d273b8921fb43d7bf7437a74891b4286
+
+PODFILE CHECKSUM: b11503e9dfaf66f0db011d12a9c67fe725469e9a
+
+COCOAPODS: 1.3.1

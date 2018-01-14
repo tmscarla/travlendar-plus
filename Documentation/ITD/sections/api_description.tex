@@ -1,0 +1,1662 @@
+\section{REST API}
+\label{rest}
+This section describes the first version (v1) of the implemented REST API.\\
+The functionalities provided are the ones specified in the Design Document.\\
+Here with describe exactly how such specifications have been implemented and may be used as \textbf{usage documentation}.
+
+\subsection{User Management API}
+The following endpoints are used to manage User related information.\\
+Apart for the \textbf{Registration} and \textbf{Login} endpoints all the others are privileged endpoints and require authentication.\\
+
+\textbf{Registration/Create new User}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{registrationapi}
+	endpoint & api/\{api version\}/user \\
+	\hline
+	method & POST \\
+	\hline
+	url params & \\
+	\hline
+	data params &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		mail: [alphanumeric]\\
+		password : [alphanumeric]\\
+		name: [text]
+		\bigskip
+	} \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "User creation successful",^^J
+		"user": [User]\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message": "The given data was invalid", ^^J
+		errors: *details about the errors*\} 
+		\end{lstlisting}
+		Code: 409 CONFLICT \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message": "Data not correct, ^^J
+		possible mail duplicate"\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip Creates a new User account
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		POST /api/v1/user HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"name": "travlendar", ^^J
+		"email": "travlendar@travlendar.com", ^^J
+		"password": "travlendar" ^^J
+		\} 
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{
+		"message": "User creation successful",^^J
+		"user": \{^^J
+		"name": "travlendar",^^J
+		"email": "travlendar@travlendar.com",^^J
+		"updated\_at": "2018-01-02 14:07:29",^^J
+		"created\_at": "2018-01-02 14:07:29",^^J
+		"id": 969^^J
+		\}^^J
+		\}^^J
+		\end{lstlisting}
+	}  \\
+	\hline
+\end{tabularx}
+
+\textbf{Login/Get authorization token}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{loginapi}
+	endpoint & */oauth/token \\
+	\hline
+	method & POST \\
+	\hline
+	url params & \\
+	\hline
+	data params &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		client\_id : [numeric] \\
+		client\_secret: [alphanumeric] \\
+		grant\_type: [text] \\
+		username: [alphanumeric] \\
+		password: [alphanumeric]
+		\bigskip
+	} \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		\{ \\
+		"token\_type": [text], \\
+		"expires\_in": [numeric], \\
+		"access\_token": [alphanumeric], \\
+		"refresh\_token": [alphanumeric] \\
+		\} 
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"error": "invalid\_client",^^J
+		"message": "Client authentication failed"
+		\} ^^J
+		\{
+		"error": "invalid\_credentials",^^J
+		"message": "wrong user credentials."
+		\}
+		\end{lstlisting} 
+		\bigskip
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip Returns an authentication Token
+		\bigskip }\\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		POST /oauth/token HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"client_id" : 2,^^J
+		"client_secret": "6Y8LNZ3d8lopzBoTMBZ1...",^^J
+		"grant_type": "password",^^J
+		"username": "travlendar@travlendar.com",^^J
+		"password": "travlendar"^^J
+		\}
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"token\_type": "Bearer", ^^J
+		"expires\_in": 31536000, ^^J
+		"access\_token": "eyJ0eXAiOiJKV1QiLCJ...", ^^J
+		"refresh\_token": "def502000c7aa1035278..." ^^J
+		\} ^^J
+		\end{lstlisting}
+	}  \\
+	\hline
+\end{tabularx}
+
+\textbf{Get User information}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{getuserapi}
+	endpoint & api/\{api version\}/user \\
+	\hline
+	method & GET \\
+	\hline
+	url params & \\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "Request successful",^^J
+		"user": [User]\}
+		\end{lstlisting} 
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting}
+		Code: 500 INTERNAL SERVER ERROR \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"message": "Request failed"
+		\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip Returns the current User's information
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		GET /api/v1/user HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Request successful", ^^J
+		"user": \{ ^^J
+		"id": 969, ^^J
+		"created\_at": "2018-01-02 14:07:29", ^^J
+		"updated\_at": "2018-01-02 14:07:29", ^^J
+		"preferences": null, ^^J
+		"email": "travlendar@travlendar.com", ^^J
+		"name": "travlendar", ^^J
+		"active": true ^^J
+		\} ^^J
+		\} ^^J
+		\end{lstlisting}
+	}  \\
+	\hline
+\end{tabularx}
+
+\newpage
+\textbf{Update User}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{edituserapi}
+	endpoint & api/\{api version\}/user/\{id\} \\
+	\hline
+	method & PUT \\
+	\hline
+	url params & \\
+	\hline
+	data params & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		name  :  (optional) [text] \\
+		oldPassword : (optional) [alphanumeric]\\
+		newPassword : (optional) [alphanumeric]\\
+	} \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "User successfully modified", ^^J
+		"user": [User]\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting}
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message": "The given data was invalid",^^J
+		errors: *details about the errors*\}
+		\end{lstlisting}
+		Code: 403 FORBIDDEN \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "The password provided does ^^J
+		not match the current one"
+		\}
+		\end{lstlisting}
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Provided User id and User ^^J
+		token do not match"
+		\}\\
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip Updates User's name and password information
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		PUT /api/v1/user/969 HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		
+		\bigskip
+		\begin{lstlisting}^^J
+		\{  ^^J
+		"name": "test\_account" ^^J
+		\}  ^^J
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "User successfully modified", ^^J
+		"user": \{ ^^J
+		"id": 969, ^^J
+		"created\_at": "2018-01-02 14:07:29", ^^J
+		"updated\_at": "2018-01-02 14:07:29", ^^J
+		"preferences": null, ^^J
+		"email": "travlendar@travlendar.com", ^^J
+		"name": "test\_account", ^^J
+		"active": true ^^J
+		\} ^^J
+		\} ^^J
+		\end{lstlisting}
+	}  \\
+	\hline
+\end{tabularx}
+\newpage
+\textbf{Update Preferences}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{editpereferencesapi}
+	endpoint & api/\{api version\}/preferences \\
+	\hline
+	method & PUT \\
+	\hline
+	url params & \\
+	\hline
+	data params & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		"transit" : \{\\
+		"active" : [boolean]\\
+		"maxDistance": [integer]\\
+		\}\\
+		"uber":\{\\
+		"active" : [boolean]\\
+		"maxDistance": [integer]\\
+		\}\\
+		"walking":\{\\
+		"active" : [boolean]\\
+		"maxDistance": [integer]\\
+		\}\\
+		"driving":\{ \\
+		"active" : [boolean] \\
+		"maxDistance": [integer]\\
+		\}\\
+		"cycling":\{\\
+		"active" : [boolean]\\
+		"maxDistance": [integer]\\
+		\}\\
+	} \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : \{"message": "Preferences successfully modified", "user": [User]\}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting}
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message": "The given data was invalid",^^J
+		errors: *details about the errors*\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip Updates User's Preferences
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		PUT /api/v1/preferences HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"transit" : \{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"uber":\{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"walking":\{ ^^J
+		"active" : true, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"driving":\{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"cycling":\{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\} ^^J
+		\}
+		\end{lstlisting}
+	} \\ 
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Preferences successfully ...", ^^J
+		"user": \{ ^^J
+		"id": 969, ^^J
+		"created\_at": "2018-01-02 14:07:29", ^^J
+		"updated\_at": "2018-01-02 14:07:29", ^^J
+		"preferences": \{ ^^J
+		"transit" : \{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"uber":\{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"walking":\{ ^^J
+		"active" : true, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"driving":\{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\}, ^^J
+		"cycling":\{ ^^J
+		"active" : false, ^^J
+		"maxDistance": 10000 ^^J
+		\} ^^J
+		\}, ^^J
+		"email": "travlendar@travlendar.com", ^^J
+		"name": "test\_account", ^^J
+		"active": true ^^J
+		\} ^^J
+		\} ^^J
+		\end{lstlisting}
+	}  \\
+	\hline
+\end{tabularx}
+\newpage
+\textbf{Delete User}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	endpoint & api/\{api version\}/user \\
+	\hline
+	method & DELETE \\
+	\hline
+	url params & \\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting} ^^J
+		\{"message": "User deletion success"\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting} 
+		Code: 500 INTERNAL SERVER ERROR \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"message": "User deletion failed"
+		\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip Deletes the current User account
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		DELETE /api/v1/user HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "User deletion successful", ^^J
+		\}   ^^J
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+\newpage
+\subsection{Schedule Management API}
+
+The following endpoints are used to manage Event related information.\\
+These are all privileged endpoints and require authentication.\\
+
+\textbf{Get Schedule/Events}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{getscheduleapi}
+	endpoint & api/\{api version\}/event \\
+	\hline
+	method & GET \\
+	\hline
+	url params & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		from : [integer] \\
+		to : [integer]
+		\bigskip
+	} \\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message":  "Request successful",^^J
+		"events": [Array<Event>]\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\} 
+		\end{lstlisting}
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "The given data was invalid", ^^J
+		errors: *details about the errors*\}
+		\end{lstlisting} 
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Returns a list of Events within the specified time bounds
+		\bigskip
+	} \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		GET /api/v1/event?from=0\&to=1514677000 HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Request successful", ^^J
+		"events": [ ^^J
+		\{ ^^J
+		"id": 14527, ^^J
+		"userId": 969, ^^J
+		"title": "Lesson", ^^J
+		"start": 1514676600, ^^J
+		"end": 1514677000, ^^J
+		"category": "school", ^^J
+		"description": "a brief description", ^^J
+		"longitude": 45.478054, ^^J
+		"latitude": 9.227298, ^^J
+		"travel": null, ^^J
+		"flexible\_info": null, ^^J
+		"repetitive\_info": null ^^J
+		\} ^^J
+		] ^^J
+		\} ^^J
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+\newpage
+
+\textbf{Get Active Days/Days with Events}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	endpoint & api/\{api version\}/days \\
+	\hline
+	method & GET \\
+	\hline
+	url params & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		from : [integer] \\
+		to : [integer] \\
+		epoch: [boolean]\\
+		timezone: [integer]
+		\bigskip
+	} \\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message":  "Request successful", ^^J
+		"days": [Array<Integer/String>],^^J
+		"timezone": [String]\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content : 
+		\begin{lstlisting} ^^J\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting}
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content : 
+		\begin{lstlisting} ^^J
+		\{"message": "The given data was invalid", ^^J
+		errors: *details about the errors*\}
+		\end{lstlisting}
+		Code: 400 BAD REQUEST \\
+		Content :
+		\begin{lstlisting} ^^J
+		\{"message": "Invalid timezone"\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Returns a list of Events within the specified time bounds
+		\bigskip
+	} \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		GET /api/v1/days?from=0\&to=1514677000 HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{^^J
+		"message": "Request successful", ^^J
+		"days": [ ^^J
+		1514674800 ^^J
+		], ^^J
+		"timezone": "Europe\/Paris" ^^J
+		\}
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+
+\textbf{Create new Event}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{createeventapi}
+	endpoint & api/\{api version\}/event \\
+	\hline
+	method & POST \\
+	\hline
+	url params & 
+	\\
+	\hline
+	data params & \parbox{0.8\textwidth}{
+		\bigskip
+		title: [alphanumeric]\\
+		startTime : [integer]\\
+		endTime: [integer] \\
+		type: [alphanumeric]\\
+		description: [text]\\
+		travel: [boolean]\\
+		mean: [text]\\
+		(optional) travelDuration: [integer]\\
+		(optional) distance: [integer]\\
+		(optional) startLatitude: [numeric]\\
+		(optional) startLongitude: [numeric]\\
+		flexible: [boolean]\\
+		(optional) duration: [integer]\\
+		(optional) lowerBound: [integer]\\
+		(optional) upperBound: [integer]\\
+		repetitive: [boolean]\\
+		(optional) until: [integer]\\
+		(optional) frequency: [integer]\\
+		adjustements : [vector]
+		\bigskip
+	}\\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message":  "Event creation successful", ^^J
+		"events": [Array<Event>]\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content : 
+		\begin{lstlisting} ^^J\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting}
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content : 
+		\begin{lstlisting} ^^J
+		\{"message": "The given data was invalid", ^^J
+		errors: *details about the errors*\}
+		\end{lstlisting}
+		Code: 400 BAD REQUEST \\
+		Content :
+		\begin{lstlisting} ^^J
+		\{"message": "Feasibility check failed", ^^J
+		"feasibility": *feasibility information*\}
+		\end{lstlisting}
+		Code: 500 INTERNAL SERVER ERROR\\
+		Content :
+		\begin{lstlisting} ^^J
+		\{"message": "Event creation failed"\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Creates a new Event
+		\bigskip
+	} \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		POST /api/v1/event HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		
+		\begin{lstlisting}^^J
+		\{^^J
+		"title": "Lesson",^^J
+		"start": 1514676600,^^J
+		"end": 1514677000,^^J
+		"longitude": 45.478054,^^J
+		"latitude": 9.227298,^^J
+		"description": "a brief description",^^J
+		"category": "school",^^J
+		"repetitive": false,^^J
+		"flexible": false,^^J
+		"travel": false,^^J
+		"adjustements": []^^J
+		\}
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{^^J
+		"message": "Event creation successful",^^J
+		"events": [^^J
+		\{^^J
+		"id": 14815,^^J
+		"userId": 969,^^J
+		"title": "Lesson",^^J
+		"start": 1514676600,^^J
+		"end": 1514677000,^^J
+		"category": "school",^^J
+		"description": "a brief description",^^J
+		"longitude": 45.478054,^^J
+		"latitude": 9.227298,^^J
+		"flexible_info": null,^^J
+		"travel": null^^J
+		\}
+		]
+		\}
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+
+\textbf{Get Event}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{geteventapi}
+	endpoint & api/\{api version\}/event/\{id\} \\
+	\hline
+	method & GET \\
+	\hline
+	url params &  \\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message":  "Request successful",^^J
+		"event": [Event]\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\} 
+		\end{lstlisting}
+		Code: 403 FORBIDDEN \\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "The requested resource ^^J
+		does not belong to the current User ^^J
+		or does not exists"\}
+		\end{lstlisting} 
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Returns the requested Event
+		\bigskip
+	} \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		GET /api/v1/event/14815 HTTP/1.1\\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Request successful", ^^J
+		"event":
+		\{ ^^J
+		"id": 14527, ^^J
+		"userId": 969, ^^J
+		"title": "Lesson", ^^J
+		"start": 1514676600, ^^J
+		"end": 1514677000, ^^J
+		"category": "school", ^^J
+		"description": "a brief description", ^^J
+		"longitude": 45.478054, ^^J
+		"latitude": 9.227298, ^^J
+		"travel": null, ^^J
+		"flexible\_info": null, ^^J
+		"repetitive\_info": null ^^J
+		\} ^^J
+		\} ^^J
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+
+\textbf{Delete Event}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{deleteeventapi}
+	endpoint & api/\{api version\}/event/\{id\} \\
+	\hline
+	method &  \\
+	\hline
+	url params &  \\
+	\hline
+	data params &
+	repetitions: [boolean] \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message":  "Event deleted"\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content :
+		\begin{lstlisting}^^J
+		\{
+		"message": "Unauthenticated"
+		\} 
+		\end{lstlisting}
+		Code: 403 FORBIDDEN \\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "The requested resource ^^J
+		does not belong to the current User ^^J
+		or does not exists"\}
+		\end{lstlisting} 
+		Code: 500 INTERNAL SERVER ERROR\\
+		Content :
+		\begin{lstlisting} ^^J
+		\{"message": "Event deletion failed"\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Returns the requested Event
+		\bigskip
+	} \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		DELETE /api/v1/event/14815 HTTP/1.1\\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{"message":  "Event deleted"\}
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+\newpage
+\textbf{Generate valid Event}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{getenerateapi}
+	endpoint & api/\{api version\}/generator \\
+	\hline
+	method & POST \\
+	\hline
+	url params & 
+	\\
+	\hline
+	data params & \parbox{0.8\textwidth}{
+		\bigskip
+		title: [alphanumeric]\\
+		startTime : [integer]\\
+		endTime: [integer] \\
+		type: [alphanumeric]\\
+		description: [text]\\
+		travel: [boolean]\\
+		mean: [text]\\
+		(optional) startLatitude: [numeric]\\
+		(optional) startLongitude: [numeric]\\
+		flexible: [boolean]\\
+		(optional) duration: [integer]\\
+		repetitive: [boolean]\\
+		(optional) until: [integer]\\
+		(optional) frequency: [integer]\\
+		\bigskip
+	}\\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content : 
+		\begin{lstlisting}^^J
+		\{"message":  "Request succesful", ^^J
+		"event": [Event], ^^J
+		"options": Array<Travel+adjustements> \}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 401 UNAUTHORIZED \\
+		Content : 
+		\begin{lstlisting} ^^J\{
+		"message": "Unauthenticated"
+		\}
+		\end{lstlisting}
+		Code: 422 UNPROCESSABLE ENTRY \\
+		Content : 
+		\begin{lstlisting} ^^J
+		\{"message": "The given data was invalid", ^^J
+		errors: *details about the errors*\}
+		\end{lstlisting}
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Creates a new Event
+		\bigskip
+	} \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		POST /api/v1/generator HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		
+		\begin{lstlisting}^^J
+		\{^^J
+		"title": "Lesson",^^J
+		"start": 1513980000,^^J
+		"end": 1513993600,^^J
+		"longitude": 11.244536,^^J
+		"latitude": 43.800797,^^J
+		"description": "first lesson",^^J
+		"category": "school",^^J
+		"travel": true,^^J
+		"flexible": true,^^J
+		"repetitive": false,^^J
+		"startLongitude": 11.230715,^^J
+		"startLatitude": 43.749687,^^J
+		"duration": 300^^J
+		\}
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Request successful",^^J
+		"event": \{^^J
+		"userId": 969,^^J
+		"title": "Lesson",^^J
+		"start": 1513980000,^^J
+		"end": 1513993600,^^J
+		"longitude": 11.244536,^^J
+		"latitude": 43.800797,^^J
+		"category": "school",^^J
+		"description": "first lesson",^^J
+		"id": -1,^^J
+		"flexibleInfo": \{^^J
+		"eventId": -1,^^J
+		"lowerBound": 1513980000,^^J
+		"upperBound": 1513993600,^^J
+		"duration": 300^^J
+		\}^^J
+		\},^^J
+		"options": [^^J
+		\{^^J
+		"travel": \{^^J
+		"mean": "driving",^^J
+		"duration": 1662,^^J
+		"distance": 9569,^^J
+		"startLatitude": 43.749687,^^J
+		"startLongitude": 11.230715^^J
+		\},^^J
+		"adjustements": \{^^J
+		"-1": [^^J
+		1513993200,^^J
+		1513993600^^J
+		]\}\}]\}^^J
+		\end{lstlisting}
+	}\\
+	\hline
+\end{tabularx}
+\newpage
+\subsection{Booking Management API}
+
+The following endpoints are used to manage Booking information.\\
+These are all privileged endpoints and require authentication.\\
+
+\textbf{Available Booking Options}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{availableoptions}
+	endpoint & api/\{api version\}/available \\
+	\hline
+	method & GET \\
+	\hline
+	url params & \parbox{0.8\textwidth}{
+		event\_id: [integer]\\ 
+		start\_latitude: [integer] \\ 
+		start\_longitude: [integer]
+	}\\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "Request successful",^^J
+		"available": Array<Bookings>\}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 404  \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Error in Uber services: ^^J 
+		no available travels"  ^^J
+		"available": Array<>  
+		\} 
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip 
+		Returns the available booking options
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		GET /api/v1/available HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"event_id": "500", ^^J
+		"start_latitude": "45.485976", ^^J
+		"start_longitude": "9.204145" ^^J
+		\} 
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{
+		"message": "Request successful",^^J
+		"available": [ ^^J
+		\{ ^^J
+		"service": "uber", ^^J
+		"bookingInfo": \{ ^^J
+		"product_id": "d9af4271-d500-4dbf...", ^^J
+		"request_id": null, ^^J
+		"type": "Nearest UberBLACK", ^^J
+		"duration": 900, ^^J
+		"distance": 2752, ^^J
+		"price_low": 13, ^^J
+		"price_high": 13, ^^J
+		"start_latitude": 45.485976, ^^J
+		"start_longitude": 9.204145, ^^J
+		"end_latitude": 45.476851, ^^J
+		"end_longitude": 9.225882 ^^J
+		\}^^J
+		\}, ^^J
+		\{ ^^J
+		"service": "uber", ^^J
+		"bookingInfo": \{ ^^J
+		"product_id": "78756b99-0f94-4541...", ^^J
+		"request_id": null, ^^J
+		"type": "UberLUX", ^^J
+		"duration": 960, ^^J
+		"distance": 2752, ^^J
+		"price_low": 18,^^J
+		"price_high": 18,^^J
+		"start_latitude": 45.485976,^^J
+		"start_longitude": 9.204145,^^J
+		"end_latitude": 45.476851,^^J
+		"end_longitude": 9.225882^^J
+		\} ^^J
+		\} ^^J
+		] ^^J
+		\} ^^J
+		\end{lstlisting}
+	} \\
+	\hline
+\end{tabularx}
+\newpage
+\textbf{Create Booking}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{createbooking}
+	endpoint & api/\{api version\}/book \\
+	\hline
+	method & POST \\
+	\hline
+	url params & \parbox{0.8\textwidth}{
+		event\_id: [integer] \\
+		product\_id: [alphanumeric] \\
+		token: [alphanumeric] \\ 
+		start\_latitude: [floating] \\ 
+		start\_longitude: [floating] 
+	}\\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content :
+		\begin{lstlisting}^^J
+		\{"message": "Request successful",^^J
+		"booking": [Booking] \}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 400  \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Is not possible to book ^^J
+		a ride after the start of the event"  ^^J
+		"booking": []
+		\} 
+		\end{lstlisting}
+		\bigskip
+		Code: 400  \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "Is not possible to book ^^J
+		a ride until 60 minutes before ^^J
+		the start of the event" ^^J
+		"booking": []
+		\} 
+		\end{lstlisting}
+		\bigskip
+		Code: 404  \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{
+		"message": "A problem occurred during ^^J
+		the booking creation" ^^J
+		"booking": []
+		\} 
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip 
+		Returns the current booking
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		POST /api/v1/book HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"event_id": "500", ^^J
+		"product_id": "78756b99-0f94-4541...", ^^J
+		"token": "KA.eyJ2ZXJzaW9uIjoyLCJp...",  ^^J
+		"start_latitude": "45.485976", ^^J
+		"start_longitude": "9.204145" ^^J
+		\} 
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Request successful",^^J
+		"booking": \{ ^^J
+		"service": "uber", ^^J
+		"bookingInfo": \{ ^^J
+		"product_id": "d9af4271-d500-4dbf...", ^^J
+		"request_id": c1608441-9780-4851..., ^^J
+		"type": "Nearest UberBLACK", ^^J
+		"duration": 900, ^^J
+		"distance": 2752, ^^J
+		"price_low": 13, ^^J
+		"price_high": 13, ^^J
+		"start_latitude": 45.485976, ^^J
+		"start_longitude": 9.204145, ^^J
+		"end_latitude": 45.476851, ^^J
+		"end_longitude": 9.225882 \},^^J
+		"id": 427 ^^J
+		\}^^J
+		\} 
+		\end{lstlisting}
+	} \\
+	\hline
+\end{tabularx}
+\newpage
+\textbf{Delete Booking}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{deletebooking}
+	endpoint & api/\{api version\}/book \\
+	\hline
+	method & DELETE \\
+	\hline
+	url params & \parbox{0.8\textwidth}{
+		token: [alphanumeric] \\
+		booking\_id: [integer] 
+		}\\
+		\hline
+		data params & \\
+		\hline
+		success response &
+		\parbox{0.8\textwidth}{
+			\bigskip
+			Code: 200\\
+			Content :
+			\begin{lstlisting}^^J
+			\{ ^^J
+			"message": "Booking deletion successful" ^^J
+			\}
+			\end{lstlisting}
+			\bigskip
+		} \\
+		\hline
+		error response & 
+		\parbox{0.8\textwidth}{
+			\bigskip
+			Code: 403  \\
+			Content : 
+			\begin{lstlisting}^^J
+			\{ ^^J
+			"message": "User has no active booking" ^^J
+			\} 
+			\end{lstlisting}
+			\bigskip
+			Code: 404  \\
+			Content : 
+			\begin{lstlisting}^^J
+			\{ ^^J
+			"message": "Booking deletion failed" ^^J
+			\} 
+			\end{lstlisting}
+			\bigskip
+		} \\
+		\hline
+		function & \parbox{0.8\textwidth}{
+			\bigskip 
+			Delete the current booking from the DB and the service
+			\bigskip} \\
+		\hline
+		Request example & 
+		\parbox{0.8\textwidth}{
+			\bigskip
+			DELETE /api/v1/book HTTP/1.1 \\
+			Host: {addr}:8080 \\
+			User-Agent: * \\
+			Content-Type: application/json \\
+			Accept: application/json \\
+			Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+			\bigskip
+			\begin{lstlisting}^^J
+			\{ ^^J
+			"token": "KA.eyJ2ZXJzaW9uIjoyLCJp...",  ^^J
+			\} 
+			\end{lstlisting}
+		}  \\
+		\hline
+		Response example & 
+		\parbox{0.8\textwidth}{
+			\bigskip
+			\begin{lstlisting}^^J
+			\{ ^^J
+			"message": "Booking deletion successful",^^J
+			\}
+			\end{lstlisting}
+		} \\
+		\hline
+\end{tabularx}
+
+\textbf{Show Current Booking}
+
+\begin{tabularx}{\linewidth}{| l | l |}
+	\hline
+	\label{showcurrentbooking}
+	endpoint & api/\{api version\}/book/current/booking \\
+	\hline
+	method & GET \\
+	\hline
+	url params & \parbox{0.8\textwidth}{
+		token: [alphanumeric] \\
+	}\\
+	\hline
+	data params & \\
+	\hline
+	success response &
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 200\\
+		Content :
+		\begin{lstlisting}^^J
+		\{ ^^J 
+		"message": "Current ride available",^^J
+		"current": [Booking] ^^J
+		 \}
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	error response & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		Code: 403  \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "User has no active booking" ^^J
+		"current": [] ^^J
+		\} 
+		\end{lstlisting}
+		\bigskip
+		Code: 403  \\
+		Content : 
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Current Uber booking ^^J
+		 not present in database" ^^J
+		"current": []
+		\} 
+		\end{lstlisting}
+		\bigskip
+	} \\
+	\hline
+	function & 
+	\parbox{0.8\textwidth}{
+		\bigskip 
+		Returns the current booking
+		\bigskip}  \\
+	\hline
+	Request example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		GET /api/v1/book/current/booking HTTP/1.1 \\
+		Host: {addr}:8080 \\
+		User-Agent: * \\
+		Content-Type: application/json \\
+		Accept: application/json \\
+		Authorization: Bearer eyJ0eXAiOiJKV1QiLC... \\
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"token": "KA.eyJ2ZXJzaW9uIjoyLCJp...",  ^^J
+		\} 
+		\end{lstlisting}
+	}  \\
+	\hline
+	Response example & 
+	\parbox{0.8\textwidth}{
+		\bigskip
+		\begin{lstlisting}^^J
+		\{ ^^J
+		"message": "Request successful",^^J
+		"current": \{ ^^J
+		"service": "uber", ^^J
+		"bookingInfo": \{ ^^J
+		"product_id": "d9af4271-d500-4dbf...", ^^J
+		"request_id": c1608441-9780-4851..., ^^J
+		"type": "Nearest UberBLACK", ^^J
+		"duration": 900, ^^J
+		"distance": 2752, ^^J
+		"price_low": 13, ^^J
+		"price_high": 13, ^^J
+		"start_latitude": 45.485976, ^^J
+		"start_longitude": 9.204145, ^^J
+		"end_latitude": 45.476851, ^^J
+		"end_longitude": 9.225882 \},^^J
+		"id": 427 ^^J
+		\}^^J
+		\} 
+		\end{lstlisting}
+	} \\
+	\hline
+\end{tabularx}

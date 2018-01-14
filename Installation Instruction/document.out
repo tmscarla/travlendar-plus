@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Database Setup}{}% 2
+\BOOKMARK [1][-]{section.3}{Mail Account}{}% 3
+\BOOKMARK [1][-]{section.4}{External Services Setup}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Google API}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{MapBox API}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Uber API}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.4}{Usage of the keys}{section.4}% 8
+\BOOKMARK [1][-]{section.5}{Application Back-end Setup}{}% 9
+\BOOKMARK [2][-]{subsection.5.1}{Instructions}{section.5}% 10
+\BOOKMARK [1][-]{section.6}{Client Application Setup}{}% 11
+\BOOKMARK [2][-]{subsection.6.1}{Requirements}{section.6}% 12
+\BOOKMARK [2][-]{subsection.6.2}{How to build}{section.6}% 13
+\BOOKMARK [2][-]{subsection.6.3}{How to test}{section.6}% 14
+\BOOKMARK [2][-]{subsection.6.4}{Known issues}{section.6}% 15

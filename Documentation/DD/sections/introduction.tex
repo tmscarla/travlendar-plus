@@ -1,0 +1,71 @@
+\section{Introduction}
+\subsection{Purpose}
+This document is aimed to provide an overview of the \textit{Travlendar+} application, explaining how to satisfy the various project requirements stated in the RASD.
+
+This document is mainly intended for developers and testers and its purpose is to provide a functional description of the main architectural components, their interfaces and their interactions, along with the design patterns and algorithms to be implemented.
+ 
+\subsection{Scope}
+
+\textit{Travlendar+} is a calendar based application whose goal is to help registered Users organize their day by scheduling their appointments and providing the best solutions in terms of mobility.
+
+Users are able to manage their schedule, adding, deleting or modifying events.
+The system is in charge to check the feasibility of the schedule and to warn Users in case a conflict occurs. Furthermore, for each event, the application provides a list of available travel options, taking into account also Users preferences. Where possible, the system allows Users to book rides or to buy tickets for travel means relying on third party services. 
+
+\textit{Travlendar+} is structured in a multitier architecture. More specifically, the \textit{Business logic} layer has the task of computing schedulability checks and interacts with external third-party services, through the use of interfaces, allowing Users to book rides or buy tickets. This layer is connected with the \textit{Data} layer, in which are stored all the Users data (credentials, schedule, preferences). The \textit{Presentation} layer, is build through the \textit{thin Client} paradigm in which the client needs to perform close to no computation, allowing a more portable system.
+
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+\begin{itemize}
+	\item \textit{Client:} is a piece of computer hardware or software that accesses a service made available by a server.
+	\item \textit{Server:} a computer program or a device that provides functionality for other programs or devices, called "clients".
+	\item \textit{Reverse Proxy:} proxies that forward requests to one or more ordinary servers which handle the request.
+	\item \textit{Firewall:} is a network security system that monitors and controls incoming and outgoing network traffic based on predetermined security rules.
+	\item \textit{Port:} is an endpoint of communication in an operating system.
+\end{itemize}
+
+\subsubsection{Acronyms}
+
+\begin{center}
+	\begin{tabular}{| l | l |}
+		\hline
+		DBMS & Data Base Management System\\
+		HTTP & Hyper Text Transfer Protocol\\
+		HTTPS & Hyper Text Transfer Protocol Secure\\
+		API & Application Program Interface \\
+		IEEE & Institute of Electrical and Electronics Engineers\\
+		OS & Operative System\\
+		UI & User Inteface\\
+		UX & User Experience\\
+		REST & REpresentational State Transfer\\
+		SPA & Single Page Application \\
+		MVC & Model View Controller\\
+		ORM & Object-Relational Mapping\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{Abbreviations}
+\begin{itemize}
+	\item \textbf{[R.n]}: n-th functional requirement in the RASD
+\end{itemize}
+
+\subsection{Reference Documents}
+\begin{itemize}
+	\item RASD document
+	\item Mandatory project assignment
+\end{itemize}
+
+\subsection{Overview}
+The rest of the document is organized in this way:
+\begin{itemize}
+
+	\item \textbf{Architectural Design:} shows the main components of the systems and their relationships. This section will also focus on design choices, styles, patterns and paradigms. 
+	\item \textbf{Algorithm Design:} presents and discuss in detail the algorithms designed for the system functionalities.
+	\item \textbf{User Interface Design:} provides further details on the user interface defined in the RASD document through the use of UX modeling. 
+	\item \textbf{Requirements Traceability:} shows how the requirements in the RASD are satisfied by the design choices of the DD.
+	\item \textbf{Implementation, Integration and Test plan}: shows the order in which the implementation and integration of subcomponents will occur and how the integration will be tested.
+
+\end{itemize}
+
+

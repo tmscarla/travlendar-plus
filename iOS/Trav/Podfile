@@ -1,0 +1,25 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '11.1'
+use_frameworks!
+
+target 'Trav' do
+   pod 'JTAppleCalendar'
+   pod 'SwiftDate'
+   pod 'Alamofire'
+   pod 'CropViewController'
+   pod 'UberRides'
+   pod 'KeychainSwift'
+
+   def testing_pods
+      pod 'Quick'
+      pod 'Nimble'
+   end
+
+   target 'TravTests' do
+      testing_pods
+   end
+
+   target 'TravUITests' do
+      testing_pods
+   end
+end

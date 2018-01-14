@@ -1,0 +1,6 @@
+framework module UberCore {
+  umbrella header "UberCore-umbrella.h"
+
+  export *
+  module * { export * }
+}

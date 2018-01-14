@@ -1,0 +1,6 @@
+framework module Pods_Trav {
+  umbrella header "Pods-Trav-umbrella.h"
+
+  export *
+  module * { export * }
+}

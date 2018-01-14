@@ -1,0 +1,142 @@
+\section{Introduction}
+
+The following Requirement Analysis and Specification Documents aims at providing a baseline for project planning and development. It illustrates the specifics of the application domain and the relative System in terms of functional requirements, non functional requirements and constraints. It describes the components and the System interactions with the external world, also through use cases scenarios. A more formal specification of the most relevant features will be specified with the use of the Alloy language.\\
+This document is intended for developers tasked with the implementation of the System, testers who are involved in requirements validation and project managers that supervise the development process.
+
+\subsection{Revision History}
+
+\begin{tabular}{| c | c | m{3cm} | m{5.3cm} |}
+	\hline
+	\textbf{Version} & \textbf{Date} & \textbf{Authors} & \textbf{Summary}\\
+	\hline
+	1.0 & 29/10/2017 & \begin{tabular}{@{}c@{}}G. Menchetti\\L. Norcini\\T. Scarlatti\end{tabular} & First release \\
+	\hline
+	1.1 & 27/11/2017 & \begin{tabular}{@{}c@{}}G. Menchetti\\L. Norcini\\T. Scarlatti\end{tabular}  & \parbox{5.3cm}{Main changes
+	\begin{itemize}
+		\item Global changes after Design phase
+		\item Changes in software attributes
+		\item Changes in goals and requirements section
+		\item Changes in the class diagram
+	\end{itemize}
+	}\\
+	\hline
+\end{tabular}
+
+
+\subsection{Purpose}
+
+\textit{Travlendar+} is a calendar based application whose goal is to help registered Users organize their day by scheduling their appointments and providing the best solutions in terms of mobility.\\
+The application allows Users to create a meeting for a specified time, producing a feedback of feasibility according to the other appointments and providing Users with a list of travel options leveraging Users preferences and additional informations (e.g. traffic). Once created, events can be modified or deleted at any time up to the moment they start. Furthermore, each appointment can be assigned to a specific class (e.g. business, family, personal, etc) previously defined by Users. 
+The System will produce a warning if a new appointment creates any schedule conflicts, for instance if the time overlaps with another meeting or if the location is not reachable on time. In this case, Users won't be allowed to create the event.\\
+\textit{Travlendar+} implements a notification System: Users may chose whether to be notified a certain time before the event or not.\\
+Users are able to express their preferences and constraints concerning certain means of travel. For example, traveling by bicycle or on foot is allowed only on distances shorter than a given threshold, public transport or taxis, if available, may be preferred to the use of a personal car.\\
+Other than the standard ones, \textit{Travlendar+} offers two particular type of events: recurrent and flexible. Flexible events can be scheduled in a determined window of time and with a specified minimum duration (e.g., going to gym may imply at least 1.30h of training but does not necessarily need to start at a specific time). Recurrent events instead, can be scheduled for more than one day with a frequency specified by the User.\\
+Finally, \textit{Travlendar+} provides a booking functionality allowing Users to purchase public transports tickets, reserve a taxi or locate the nearest car or bike of a vehicle sharing service through the use of third party platforms.\\ 
+
+\noindent
+The above description can be summarized as follows, in a list of goals:
+\begin{itemize}
+	\item \textbf{[G.1]} The System allows the User to access the functionalities of the application from different locations and devices. The data has to be coherent across different devices.
+	\item \textbf{[G.2]} The System allows the User to manage meetings in his schedule.
+	\item \textbf{[G.3]} The System allows the User to reach every meeting on time.
+	\item \textbf{[G.4]} The System allows the User to select or edit a travel mean to reach an event.
+	\item \textbf{[G.5]} The System allows the User to set preferences.
+	\item \textbf{[G.6]} The System allows the User to create flexible events and repetitive events.
+	\item \textbf{[G.7]} The System allows the User to book transportation for a trip.
+	\item \textbf{[G.8]} The System allows the User to be notified before the occurrence of an event.
+\end{itemize}
+
+
+\subsection{Scope}
+According to the \textit{World and Machine} paradigm we can distinguish the \textit{Machine}, which is System to be developed, from the \textit{World}, which is portion of the real-world affected by the machine. This separation leads to a classification of the phenomena in three different types, depending on where they occur.\\
+In this context, the main relevant phenomena are organized as follows: \\ \\
+\noindent
+\textbf{World phenomena:}
+\begin{itemize}
+	\item Transport delay: unforeseen circumstances that cause lateness with respect to the computed ETA.
+	\item Unscheduled appointment: appointments the User either forgot or did not know about in advance.
+	\item Unexpected issues: anything that leads to a delay or even a cancellation of the meetings.
+\end{itemize}
+
+\noindent
+\textbf{Machine phenomena:}
+\begin{itemize}
+	\item API queries: requests for third-party services.
+	\item Feasibility study: the System checks the schedulability of a new or edited event.
+	\item System clock: the System runs its tasks according to its clock.
+	\item DBMS: all operations performed to retrieve/store data.
+\end{itemize}
+
+\noindent
+\textbf{Shared Phenomena:}
+\begin{itemize}
+	\item[] \textbf{Controlled by the world and observed by the machine}
+	\item Registration/Login: a guest can sign up to the application or otherwise log in if is already registered.
+	\item Manage events: the User can create, modify or delete events.
+	\item Set preferences: the User customizes his/her travel experience.
+	\item[] \textbf{Controlled by the machine and observed by the world}
+	\item Suggest travel options: provides a User with a list of possible travel means.
+	\item Generate warnings: produce a warning in case of a scheduling conflict.
+	\item Send notifications: alert the User before an event.
+\end{itemize}
+
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+
+\begin{itemize}
+	\item \textit{Guest:} a person who has to sign up and who is not able to access any feature of the application.
+	\item \textit{User:} a registered User who has to log in.
+	\item \textit{Logged in User:} a registered User who logged in. 
+	\item \textit{Calendar:} User personal calendar that shows the events organized per day, week or month.
+	\item  \textit{Schedule:} the set of the events of a User for a specific day.
+	\item \textit{Event, Meeting, Appointment:} different ways to refer to entries in the schedule.
+	\item \textit{Flexible Event:} a particular type of event that can be scheduled in a time slot and with a given duration.
+	\item \textit{Repetitive Event:} an event that is scheduled more times with a specified frequency.
+	\item \textit{Warning:} a message sent from the System to the User to warn him/her about a conflict in the schedule.
+	\item \textit{Notification:} a message which advise the User of an upcoming event.
+	\item \textit{Third-party services:} services used by the System in order to provide extra functionalities.
+\end{itemize}
+
+\subsubsection{Acronyms}
+
+\begin{center}
+	\begin{tabular}{| l | l |}
+		\hline
+		DBMS & Data Base Management System\\
+		HTTPS & Hyper Text Transfer Protocol Secure\\
+		ETA & Estimated Time of Arrival \\
+		API & Application Program Interface \\
+		IEEE & Institute of Electrical and Electronics Engineers\\
+		OS & Operative System\\
+		UI & User Inteface\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{Abbreviations}
+
+\begin{itemize}
+		\item \textbf{[Gn]}: n-th goal
+		\item \textbf{[Dn]}: n-th domain assumption
+		\item \textbf{[Rn]}: n-th functional requirement
+\end{itemize}
+
+\subsection{Reference Documents}
+\begin{itemize}
+	\item IEEE Standard 830-1998: Recommended Practice for Software Requirements Specifications
+	\item IEEE Standard 830-1993: IEEE Guide to Software Requirements Specifications
+	\item \href{http://alloy.mit.edu/alloy/documentation.html}{Alloy documentation}
+	\item Project assignment specifications
+\end{itemize}
+
+
+\subsection{Overview}
+The rest of the document is organized in this way:
+
+\begin{itemize}
+	\item \textbf{Overall description:} in this section a general description of the application will be given, focusing on the context of the System and giving further details about shared phenomena. The most relevant functions of the System are also explained, together with the User characteristics. Finally, through the specifications of constraints, dependencies and assumptions, we will show how the System is integrated in the real world.
+	
+	\item \textbf{Specific requirements:} in this section will be provided a full-detailed perspective of all the aspects of the previous section. The main aim is to give a useful item for both designers and testers.\\
+	Requirements are fully explained and organized according to their type, and a list of all possible interactions with the System is provided through use cases and sequence diagrams.
+\end{itemize}

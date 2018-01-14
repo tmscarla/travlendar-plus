@@ -1,0 +1,127 @@
+\section{Algorithm Design}
+
+\subsection{Chek feack feasibility for standard and flexible Events}
+
+\begin{algorithm}[H]
+
+	\KwData{
+		\\ \textit{schedule}: User's schedule
+		\\ \textit{newEvent}: Event to be added to the schedule
+		\\ \textit{travelOptions}: Travel options available
+	}
+	\KwResult{
+		\\ \textit{feasible}: \textit{true} if the resulting schedule is feasible \textit{false} otherwise
+		\\ \textit{travelOptions}: the Travel options that allow for a feasible schedule
+		\\ \textit{changes}: a dictionary that for each travel option contains the necessary changes for the schedule to be feasible.
+	}
+	\bigskip
+	changes $\gets$ Empty Dictionary\\{
+	\For{option $\in$ travelOptions}{
+	feasible $\gets$ true\\
+	conflicts $\gets$ detectConflicts(newEvent, schedule, option)\\
+	\For{event 	$\in$ conflicts }{
+	optionChanges $\gets$ changes.forkey(option)\\
+	feasible, newChange $\gets$ adjustTimes(event,newEvent, optionChanges)\\
+	optionChanges.append(newChange)\\
+	\If{$\lnot$ feasible}{
+	travelOptions.remove(option)\\
+	changes.removekey(option)\\
+	break\\
+	}
+	}
+	}
+\eIf{travelOptions.length $>$ 0}{\KwRet{True, travelOptions, changes}}
+{\KwRet{False}}
+}
+\end{algorithm}
+\bigskip
+\noindent
+This algorithm describes how the feasibility is checked for standard and flexible Events.\\
+Given a  Schedule, an Event that has been added or modified and a list of possible Travel means, the algorithm detects for each option a list of conflicts, if any of the events causing the conflict is flexible the algorithm tries to adjust the start and the end of such events in order to remove the conflict.\\
+If none of the events are flexible or it's not possible to remove the conflict the Travel option is discarded.\\
+At the end if there are still Travel options available the algorithm returns them along with the necessary changes to make the schedule feasible.
+
+\subsection{Check feasibility for repetitive Events}
+
+\begin{algorithm}[H]
+	
+	\KwData{
+		\\ \textit{schedule}: User's schedule
+		\\ \textit{newEvent}: Event to be added to the schedule
+		\\ \textit{option}: choosen Travel option
+	}
+	\KwResult{
+		\\ \textit{repetitionsToRemove}: a list that contains the repetitions to remove for the schedule to be feasible.
+		\\ \textit{changes}: a list that contains the necessary changes for the schedule to be feasible.
+	}
+	\bigskip
+	changes $\gets$ Empty List\\
+	repetitionsToRemove $\gets$ Empty List\\
+	{
+		\For{repEvent $\in$ newEvent.repetitions}{ 
+			feasible $\gets$ true\\
+			conflicts $\gets$ detectConflicts(repEvent, schedule, option)\\
+			temporayChanges $\gets$ Empty List\\
+			\For{event 	$\in$ conflicts }{
+				feasible, newChange $\gets$ adjustTimes(event, repEvent, temporaryChanges)\\
+				temporaryChanges.append(newChange)\\
+				\If{$\lnot$ feasible}{
+					repetitionsToRemove.append(repEvent)\\
+					break\\
+				}
+				concat(changes, temporaryChanges)\\
+		}}
+	\KwRet{repetitionsToRemove, changes}
+	}
+\end{algorithm}
+
+\bigskip
+\noindent
+This algorithm describes how the feasibility is checked for repetitive Events.
+Given a  Schedule, a repetitive Event that has been added or modified and a chosen Travel mean,  the algorithm detects for each repetition a list of conflicts, if any of the events causing the conflict is flexible the algorithm tries to adjust the start and the end of such events in order to remove the conflict.\\
+If none of the events are flexible or it's not possible to remove the conflict the repetition is discarded.\\
+At the end the algorithm returns the repetitions to remove along with the necessary changes to make to the schedule feasible.
+
+\subsection{Adjust times for flexible Events}
+
+\begin{algorithm}[H]
+	
+	\KwData{
+		\\ \textit{newEvent}: Event to be added to the schedule
+		\\ \textit{event}: Event in conflict
+		\\ \textit{changes}: current Changes
+	}
+	\KwResult{
+		\\ \textit{feasible}: \textit{true} if the conflict is solved \textit{false} otherwise
+		\\ \textit{changes}: changes to add to solve the conflict
+	}
+	\bigskip
+	change $\gets$ Empty List \\
+	e1, e2 $\gets$ applyChanges(newEvent, event, changes)\\
+	sTime $\gets$ e1.start - option.duration\\
+	eTime $\gets$ e1.end\\
+	\If{eTime $>$ e2.startTime \&\& eTime $<$ e2.endTime \&\& sTime $>$ e2.start \&\&  sTime $<$ e2.end}{
+			\KwRet{False}
+	}
+	\If{e1.flexible}{
+		\If{sTime $>$ e2.start \&\&  sTime $<$ e2.end}{
+			e1.start = tryToMoveSTART(e2.end + option.duration, e1)\\
+			\If{sTime $>$ e2.end}{
+				\KwRet{ True, changes}
+		}
+	}
+		\If{eTime $>$ e2.startTime \&\& eTime $<$ e2.endTime}{
+	e1.endtime = tryToMoveEND(e2.start , e1)\\
+				\If{eTime $<$ e2.start}{
+		\KwRet{ True, changes}
+	}
+}
+
+	}
+\If{e2.flexible}{
+	same process but modifying e2
+}
+\KwRet{False}
+\end{algorithm}
+
+This algorithm corresponds to the \textit{adjustTimes} subrouting called by the two previous algorithms.\\ This routine takes as input two conflicting events (plus some additional changes that may have been computed in advance) and if possible adjusts the times of the two in order to remove the conflicts.

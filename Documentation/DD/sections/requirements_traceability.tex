@@ -1,0 +1,66 @@
+\section{Requirements Traceability}
+
+In this section we show how the components of the system architecture are involved in satisfying all the requirements outlined in the RASD document.
+
+\begin{table}[h!]
+	\centering
+	\footnotesize
+	\hyphenpenalty=10000
+	\begin{tabularx}{\textwidth}{@{}lX@{}}
+		\toprule
+		\textbf{Component (DD)} & \textbf{Requirements (RASD)}\\	
+		\midrule
+		Auth Controller & \textbf{[R.1]} A Guest must be able to register. During the registration
+		the System will ask to provide credentials.\\
+		& \textbf{[R.2]} The System must check if the Guest credentials are valid. \\
+		& \textbf{[R.4]} The System must allow the User to log in using his/her
+		personal credentials.\\
+		\midrule
+		User Controller & \textbf{[R.3]} The System must store all User credentials. \\
+		& \textbf{[R.5]} The System must allow the User to change personal credentials. \\
+		& \textbf{[R.20]} The System allows the User to define specific constraint for each travel means. \\
+		\midrule
+		Mail Services Interface & \textbf{[R.6]} The System must send a confirmation email if username, email or password is changed.\\
+		\midrule
+		Schedule Controller & \textbf{[R.7]} The User must be allowed to create events, specifying all the mandatory fields.\\
+		& \textbf{[R.8]} The User must be allowed to edit or delete a specific event in his/her schedule. \\
+		& \textbf{[R.9]} The System allows the User to provide optional event information: membership category and a brief description. \\
+		& \textbf{[R.10]} The System must allow the User to view all the events for a specific day.\\
+		& \textbf{[R.12]} The System must prompt the User to specify the location from which a certain event will be reached. \\
+		& \textbf{[R.16]} The System must allow the User to select a specific event.\\
+		& \textbf{[R.22]} The System must allow the User to select the Eco Mode in order to minimize carbon footprint. \\
+		& \textbf{[R.24]} The System must allow the User to create repetitive events. \\
+		& \textbf{[R.23]} The System must allow the User to create flexible events \\
+		& \textbf{[R.27]} The System must allow the User to select a travel mean for a repetitive event only for a specific day after its creation.\\
+		Map Services Interface & \textbf{[R.13]} The System must compute travel time between appointments. \\
+		\midrule
+	\end{tabularx}
+\end{table}
+
+\newpage
+
+\begin{table}[h!]
+	\centering
+	\footnotesize
+	\hyphenpenalty=10000
+	\begin{tabularx}{\textwidth}{@{}lX@{}}
+		\midrule
+		Feasibility Manager & \textbf{[R.11]} The System must check if the event created or edited by the User is feasible.\\
+		& \textbf{[R.14]} The System must guarantee a feasible schedule, that is, the User is able to move from an appointment to another in time.\\
+		& \textbf{[R.15]} The System allows the User to add or edit an event only if it’s not in conflict with other events already existent.\\
+		& \textbf{[R.25]} The System must check the feasibility of flexible events.\\
+		& \textbf{[R.26}] The System must check the repetitive events. The System must warn the User in case of conflicts for some of the day spec- ified: the User will be allowed to add the event only in the day with no conflicts or to discard the event creation. \\
+		\midrule
+		Notification Controller & \textbf{[R.21]} The System must allow the User to be notified a specific time before any event. \\
+		& \textbf{[R.30]} The System must allow to activate notification and setting its time. \\
+		& \textbf{[R.31]} The System must activate a ring at the time selected by the User. \\
+		\midrule
+		Booking Controller & \textbf{[R.28]} The System must allow the User to select a specific travel means.\\
+		Booking Services & \textbf{[R.29]} The System must provide an interface for third party ser- vices allowing the User to authenticate with the service. \\
+		\bottomrule
+	\end{tabularx}
+	
+\end{table}
+
+
+	

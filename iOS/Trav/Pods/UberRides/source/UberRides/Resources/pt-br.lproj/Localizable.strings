@@ -1,0 +1,16 @@
+/* The title of the request button that deep links to the Uber app */
+"Ride there with Uber" = "Chegue lá de Uber";
+"Get a ride" = "Peça um Uber";
+"Sign in with Uber" = "Login com Uber";
+"There was a problem authenticating you." = "Tivemos um problema autenticando você.";
+"The Ride Request Widget encountered a problem." = "Widget do Uber encontrou um problema.";
+"OK" = "OK";
+"Done" = "Feito";
+"Try Again" = "Tente novamente";
+"Cancel" = "Cancelar";
+"The operation you are attempting is not supported on the current device." = "A operação não pode ser executado neste tipo de aparelho.";
+"%d min away" = "%d min";
+"%d mins away" = "%d mins";
+"%1$@ for %2$@" = "%1$@ %2$@";
+"Sign In" = "Login";
+"Sign Out" = "Logout";

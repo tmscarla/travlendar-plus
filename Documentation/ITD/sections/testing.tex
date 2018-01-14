@@ -1,0 +1,802 @@
+\section{Testing}
+
+This section describes in the following order the performed Unit Tests, Integration/Feature Tests and System Integration Tests.
+
+\subsection{Unit Testing}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Available Booking options}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Indifferent &
+		Event and valid start travel coordinates &
+		- Response message is "success" \newline
+		- Response data is not empty 
+		\\
+		
+		\hline
+		Indifferent &
+		Event with invalid start travel coordinates &
+		- Response message is "Error in Uber services: no available travels" \newline
+		- Response data is empty 
+		\\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Create Booking}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Indifferent & 
+		Available Booking option with valid user token &
+		- Response message is "success" \newline
+		- Response data is an instance of the Booking class \newline
+		- Response data is not equal to an empty Booking
+		\\
+		
+		\hline
+		Indifferent & 
+		Invalid Booking option with valid user token &
+		- Response message is not "success" \newline
+		- Response data is equal to an empty Booking
+		\\
+		
+		\hline
+		Indifferent & 
+		Valid Booking option with invalid user token &
+		- Response message is "unauthorized" \newline
+		- Response data is equal to an empty Booking
+		\\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Feasibility Check}\\
+		\hline
+		state & input & assertions \\
+		\hline
+		Indifferent &
+		Not an Event object & 
+		- TypeError
+		\\
+		\hline
+		No Event in schedule causing conflict with input &
+		Event with valid data & 
+		- feasibility result is true. \newline
+		- there are no errors.
+		 \\
+		\hline
+		Indifferent &
+		Event with start before end & 
+		- feasibility result is false. \newline
+		- the error cause is "Event data not valid". \newline
+		- the error details are "end before start".
+		 \\
+		\hline
+		Indifferent &
+		Event with flexible bounds too strict & 
+		- feasibility result is false. \newline
+		- the error cause is "Event data not valid". \newline
+		- the error details are "flexible bounds too strict".
+		\\
+		\hline
+		Indifferent &
+		Event with inconsistent flexible bounds & 
+		- feasibility result is false. \newline
+		- the error cause is "Event data not valid". \newline
+		- the error details are "flexible bounds do not respect fixed bounds".
+		\\
+		\hline
+		Indifferent &
+		Event with travel that violates preferences & 
+		- feasibility result is false. \newline
+		- the error cause is "Preferences not satisfied".
+		\\
+		\hline
+		Events in schedule causing conflict with input &
+		Event with valid data & 
+		- feasibility result is false. \newline
+		- the error cause is "Schedule conflict". \newline
+		- the error details are the ids of the conflicting Events.
+		\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Solve CSP}\\
+		\hline
+		state & input & assertions \\
+
+		\hline
+		Indifferent &
+		Not an Array object& 
+		- TypeError
+		\\
+		\hline
+		Indifferent &
+		Array of CSP variable that have a solution& 
+		- returns valid assignments for the CSP variables\\
+		\hline
+		Indifferent &
+		Array of CSP variable that have no solution & 
+		- returns an empty array\\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Integration/Feature Testing}
+In this section we present the Integration tests between the components of the back-end system.\\
+As Integration we test the Features provided by each API.\\
+Please note that for privileged endpoints we have omitted the cases in which the request is not authenticated. \\
+The reason for this is that the authentication middleware is a separated component and is tested separately.\\
+Also the expression "with valid data" refers to the validation rules associated with each request.
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{User Registration [API \ref{registrationapi}]}\\
+
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Mail not already associated with another User &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "User creation successful"\newline
+		- The database has an entry with the new User data
+		\\
+		
+		\hline
+		Mail already associated with another User   &
+		Request with valid data & 
+		- Response status code is 409 \newline
+		- Response message is "Data not correct, possible mail duplicate"\newline
+		- The database has not an entry with the new User data
+		\\
+		
+		\hline
+		Indifferent  &
+		Request with short password & 
+		- Response status code is 422 \newline
+		- Response message is "The given data was invalid." \newline
+		- The error is "The password must be at least 10 characters."
+		- The database has not an entry with the new User data 
+		\\
+		
+		\hline
+		Indifferent  &
+		Request with invalid data & 
+		- Response status code is 422 \newline
+		- Response message is "The given data was invalid." \newline
+		- The database has not an entry with the new User data
+		\\
+		
+		
+		\hline
+
+	\end{tabular}
+\end{center}
+
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Update User [API \ref{edituserapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Indifferent &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "User successfully modified" \newline
+		- The database entry for the User is modified
+		\\
+		
+		\hline
+		Indifferent  &
+		Request where current password provided does not match the one in storage & 
+		- Response status code is 403 \newline
+		- Response message is "The password provided does not match the current one" \newline
+		- The database entry for the User is not modified
+		\\
+		
+		
+		\hline
+		Indifferent  &
+		Request where User id provided does not match the one associated with the account & 
+		- Response status code is 403 \newline
+		- Response message is "Provided User id and User token do not match" \newline
+		- The database entry for the User is not modified
+		\\
+
+		\hline
+		Indifferent  &
+		Request with invalid data & 
+		- Response status code is 422 \newline
+		- Response message is "The given data was invalid." \newline
+		- The database has not an entry with the new User data
+		\\
+		
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Update User Preferences[API \ref{editpereferencesapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Indifferent &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Preferences successfully modified" \newline
+		- The database entry for the User is modified 
+		\\
+				
+		\hline
+		Indifferent &
+		Request with malformed preference data & 
+		- Response status code is 400 \newline
+		- Response message is "Payload not convertible to object" \newline
+		- The database entry for the User is not modified
+		\\
+		
+		
+		\hline
+		Indifferent  &
+		Request with invalid data & 
+		- Response status code is 422 \newline
+		- Response message is "The given data was invalid." \newline
+		- The database entry for the User is not modified
+		\\
+		
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Get User Information [API \ref{getuserapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Indifferent &
+		Request & 
+		- Response status code is 200 \newline
+		- Response message is "Request successful" \newline
+		- Returns the User information
+		\\
+		
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Create Event [API \ref{createeventapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		No Event in schedule causing conflict with the new Event &
+		Request for the creation of a Standard Event with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Event creation successful" \newline
+		- The database has an entry with the new Event data
+		\\
+		
+		\hline
+		No Event in schedule causing conflict with the new Event &
+		Request for the creation of an Event with Travel with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Event creation successful"\newline
+		- The database has an entry with the new Event data \newline
+		- The database has an entry with the new Travel data
+		\\
+		
+		\hline
+		Events in schedule causing conflict with the new Event &
+		Request for the creation of an Event Standard with valid data & 
+		- Response status code is 400 \newline
+		- Response message is "Feasibility check failed" \newline
+		- The database has not an entry with the new Event data
+		\\
+		
+		\hline
+		Events in schedule causing conflict with the new Event &
+		Request for the creation of an Event with Travel with valid data & 
+		- Response status code is 400 \newline
+		- Response message is "Feasibility check failed" \newline
+		- The database has not an entry with the new Event data \newline
+		- The database has not an entry with the new Travel data
+		\\
+		
+		\hline
+		No Event in schedule causing conflict with the new Event &
+		Request for the creation of an Repetitive Event with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Event creation successful" \newline
+		- The database has an entry with the new Event data for each repetition \newline
+		- The database has an entry with the new Repetitive Event data for each repetition
+		\\
+	
+
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		
+		\hline
+		Events in schedule causing conflict with the new Event &
+		Request for the creation of an Repetitive Event with valid data & 
+		- Response status code is 400 \newline
+		- Response message is "Feasibility check failed" \newline
+		- The database has not an entry with the new Event data for any repetition \newline
+		- The database has not an entry with the new Repetitive Event data for any repetition
+		\\
+		
+		\hline
+		Indifferent &
+		Request for the creation of an Event (of any kind) with invalid data & 
+		- Response status code is 422 \newline
+		- Response message is "The given data was invalid" \newline
+		- The database has not an entry with the new Event data
+		\\
+		
+		\hline
+		No Event in schedule causing conflict with the new Event &
+		Request for the creation of an Flexible Event with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Event creation successful" \newline
+		- The database has an entry with the new Event data \newline
+		- The database has an entry with the new Flexible Event data
+		\\
+		
+		
+		\hline
+		Events in schedule causing conflict with the new Event &
+		Request for the creation of an Flexible Event with valid data & 
+		- Response status code is 400 \newline
+		- Response message is "Feasibility check failed" \newline
+		- The database has no an entry with the new Event data \newline
+		- The database has no an entry with the new Flexible Event data
+		\\
+		
+		\hline
+		Events in schedule causing conflict with the new Event &
+		Request for the creation of an Event (of any kind but repetitive) with valid data and adjustments& 
+		- Response status code is 200 \newline
+		- Response message is "Event creation successful" \newline
+		- The database has an entry with the new Event data \newline
+		- The database has an entry with eventual additional information
+		\\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Get Event Information [API \ref{geteventapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Indifferent &
+		Request with a valid id & 
+		- Response status code is 200 \newline
+		- Response message is "Request successful" \newline
+		- Returns Event information
+		\\
+		
+		\hline
+		Indifferent &
+		Request with an invalid id  & 
+		- Response status code is 403 \newline
+		- Response message is "The requested resource does not belong to the current User or does not exists" \newline
+		\\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Delete Event [API \ref{deleteeventapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Indifferent &
+		Request with a valid id & 
+		- Response status code is 200 \newline
+		- Response message is "Event deleted" \newline
+		\\
+		
+		\hline
+		Indifferent &
+		Request with an invalid id  & 
+		- Response status code is 403 \newline
+		- Response message is "The requested resource does not belong to the current User or does not exists" \newline
+		\\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Generate Valid Event [API \ref{getenerateapi}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Schedule is adjustable &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Request successful" \newline
+		- Events created with provided informations are feasible
+		\\
+		
+		\hline
+		Schedule is not adjustable &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Request successful" \newline
+		- The information provided does not allow to create feasible Events
+		\\
+		
+		\hline
+		Indifferent &
+		Request with invalid data & 
+		- Response status code is 422 \newline
+		- Response message is "The given data was invalid"\newline
+		\\
+		
+		\hline
+		
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Available Booking options [API \ref{availableoptions}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		
+		\hline
+		Indifferent &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Request successful" \newline
+		- Response data is not empty
+		\\
+		
+		\hline
+		Indifferent &
+		Request with invalid Event identifier & 
+		- Response status code is 404 \newline
+		- Response message is "Event not found" \newline
+		- Response data is empty
+		\\
+		
+		\hline
+		Indifferent &
+		Request with invalid start travel coordinates & 
+		- Response status code is 404 \newline
+		- Response message is "Error in Uber services: no available travels" \newline
+		- Response data is empty
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Create Booking [API \ref{createbooking}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Indifferent &
+		Request with valid data & 
+		- Response status code is 200 \newline
+		- Response message is "Request successful" \newline
+		- Database has an entry with the created booking \newline
+		- Database has travel with bookingId field same as the booking identifier created \newline
+		- Booking information in the database are the same as the one created
+		\\
+		
+		\hline
+		Indifferent &
+		Request with valid data but requested too early & 
+		- Response status code is 400 \newline
+		- Response message is "Is not possible to book a ride until 60 minutes before the start of the event"\newline
+		\\
+		
+		\hline
+		Indifferent &
+		Request with valid data but requested too late & 
+		- Response status code is 400 \newline
+		- Response message is "Is not possible to book a ride after the start of the event" \newline
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Retrieve Current Booking [API \ref{showcurrentbooking}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		There is the requested active booking in the database &
+		Request with valid booking identifier & 
+		- Response status code is 200 \newline
+		- Response message is "Current ride available" \newline
+		- Response data is instance of class Booking
+		\\
+		
+		\hline
+		There is not the requested booking in the database &
+		Request with invalid booking identifier & 
+		- Response status code is 400 \newline
+		- Response message is "Booking doesn't exists" \newline
+		- Response data is null
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Delete Current Booking [API \ref{deletebooking}]}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		There is the requested active booking in the database &
+		Request with valid token & 
+		- Response status code is 200 \newline
+		- Response message is "Booking deletion successful" \newline
+		\\
+		
+		\hline
+		There is not the requested booking in the database &
+		Request when the resource doesn't exists & 
+		- Response status code is 403 \newline
+		- Response message is "User has no active booking" \newline
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{iOS Integration testing}
+
+In this section we provide the integration tests between the iOS app and the back end.
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{User Authentication}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Valid username and password set &
+		Request with provided credentials & 
+		- Response status code is 200 \newline
+		- User token is not nil \newline
+		\\
+
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Get Events}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Added two events to a specific day &
+		Request with the start and the end of the day as parameters & 
+		- Response status code is 200 \newline
+		- Events are 2 \newline
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Get Travels}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Event with travel options set &
+		Request with the position of the event and the start position of the travel & 
+		- Response status code is 200 \newline
+		- Travels of selected event is not nil \newline
+		- Number of travels is greater than 0
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Get Days with Events}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		At least one event is present in the calendar of the test user &
+		Request with the credentials of the test user & 
+		- Response status code is 200 \newline
+		- Days with events is not nil \newline
+		- Number of days with events is greater than 0.
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Add Event}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Event to be added fields are correct &
+		Request with event to be added fields as parameters & 
+		- Response status code is 200 \newline
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Save Preferences}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Required preferences fields are correctly filled &
+		Request with preferences as parameters & 
+		- Response status code is 200 \newline
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Save Settings}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Required settings fields are correctly filled &
+		Request with settings as parameters & 
+		- Response status code is 200 \newline
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|p{0.3\textwidth}|p{0.3\textwidth}|p{0.5\textwidth}|}
+		\hline
+		\multicolumn{3}{c}{Change Password}\\
+		
+		\hline
+		state & request & assertions \\
+		
+		\hline
+		Old Password and New Password are set correctly &
+		Request with passwords as parameters & 
+		- Response status code is 200 \newline
+		- User new password is effectively the new one set
+		\\
+		
+		\hline
+	\end{tabular}
+\end{center}

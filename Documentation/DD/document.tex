@@ -1,0 +1,53 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+% hyperref
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{ltablex}
+\graphicspath{ {img/} }
+\usepackage[]{algorithm2e}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\usepackage{makecell}
+
+\begin{document}
+
+\title{Software Engineering 2\\ \vspace{1em}  {\textbf{Travlendar+}} \\ \vspace{1em} \textbf{D}esign \textbf{D}ocument
+	\vspace{1.5em}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{logo}
+\end{figure}
+}
+\author{Menchetti Guglielmo\\ Norcini Lorenzo \\ Scarlatti Tommaso}
+
+\date{November 26, 2017}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\input{sections/introduction}
+\newpage
+\input{sections/architectural_design}
+\newpage
+\input{sections/algorithm_design}
+\newpage
+\input{sections/user_interface_design}
+\newpage
+\input{sections/requirements_traceability}
+\newpage
+\input{sections/implementation_integration}
+\newpage
+\input{sections/effort_spent}
+%\newpage
+%\input{sections/references}
+\end{document}

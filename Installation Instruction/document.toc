@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {section}{\numberline {2}Database Setup}{3}{section.2}
+\contentsline {section}{\numberline {3}Mail Account}{4}{section.3}
+\contentsline {section}{\numberline {4}External Services Setup}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Google API}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}MapBox API}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Uber API}{5}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Usage of the keys}{5}{subsection.4.4}
+\contentsline {section}{\numberline {5}Application Back-end Setup}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}Instructions}{6}{subsection.5.1}
+\contentsline {section}{\numberline {6}Client Application Setup}{8}{section.6}
+\contentsline {subsection}{\numberline {6.1}Requirements}{8}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}How to build}{8}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}How to test}{10}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Known issues}{10}{subsection.6.4}

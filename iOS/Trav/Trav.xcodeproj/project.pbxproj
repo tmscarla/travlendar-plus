@@ -1,0 +1,1040 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37C24633640FE84F9E34DCA3 /* Pods_Trav_TravUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC5B2F80E47AD4E4B18D4FF4 /* Pods_Trav_TravUITests.framework */; };
+		B2136B7B1FE1AA2600EC7B16 /* Pods_Trav.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2136B7C1FE1AA2600EC7B16 /* Pods_Trav.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B21D174A1FDEB85B00A5A169 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D17491FDEB85B00A5A169 /* Day.swift */; };
+		B21D174C1FDEB88A00A5A169 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D174B1FDEB88A00A5A169 /* User.swift */; };
+		B21D174E1FDEB8B700A5A169 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D174D1FDEB8B700A5A169 /* Preferences.swift */; };
+		B21D17521FDEC48D00A5A169 /* BookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D17511FDEC48D00A5A169 /* BookingViewController.swift */; };
+		B21D17541FDEC49B00A5A169 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21D17531FDEC49B00A5A169 /* TravelViewController.swift */; };
+		B22D76531FDC0A5100D1D5B8 /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22D76521FDC0A5100D1D5B8 /* AddEventViewController.swift */; };
+		B22D76551FDC14D900D1D5B8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22D76541FDC14D800D1D5B8 /* EventCell.swift */; };
+		B23B418A1FE2A8A00051D2DC /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B41891FE2A8A00051D2DC /* Event.swift */; };
+		B23B418C1FE2A8AE0051D2DC /* Travel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23B418B1FE2A8AE0051D2DC /* Travel.swift */; };
+		B24317FA1FD8E844002A25D5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24317F91FD8E844002A25D5 /* MenuViewController.swift */; };
+		B24317FC1FD8E860002A25D5 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24317FB1FD8E860002A25D5 /* MenuTableViewCell.swift */; };
+		B24317FE1FD9A157002A25D5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24317FD1FD9A157002A25D5 /* SettingsViewController.swift */; };
+		B24318001FDA18FB002A25D5 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24317FF1FDA18FB002A25D5 /* CreditsViewController.swift */; };
+		B24318041FDA1A57002A25D5 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24318031FDA1A57002A25D5 /* CalendarViewController.swift */; };
+		B24318061FDA1A68002A25D5 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24318051FDA1A68002A25D5 /* PreferencesViewController.swift */; };
+		B24318081FDA1DF3002A25D5 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24318071FDA1DF3002A25D5 /* StartViewController.swift */; };
+		B243180A1FDAC291002A25D5 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24318091FDAC291002A25D5 /* CalendarCell.swift */; };
+		B24BB3D21FD8C96700AF7765 /* DayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24BB3D11FD8C96700AF7765 /* DayViewController.swift */; };
+		B2521AA81FFF9ABD0056A370 /* ChangePasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2521AA71FFF9ABD0056A370 /* ChangePasswordTests.swift */; };
+		B26EDC2C1FD7713B0026CCC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDC2B1FD7713B0026CCC6 /* AppDelegate.swift */; };
+		B26EDC311FD7713B0026CCC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B26EDC2F1FD7713B0026CCC6 /* Main.storyboard */; };
+		B26EDC331FD7713B0026CCC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B26EDC321FD7713B0026CCC6 /* Assets.xcassets */; };
+		B26EDC4C1FD7713B0026CCC6 /* TravUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDC4B1FD7713B0026CCC6 /* TravUITests.swift */; };
+		B26EDC5A1FD77BD00026CCC6 /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDC591FD77BD00026CCC6 /* LogViewController.swift */; };
+		B26EDC5C1FD812200026CCC6 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26EDC5B1FD812200026CCC6 /* SignUpViewController.swift */; };
+		B27D88391FFBFB1A00EBAD78 /* TravelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D88381FFBFB1A00EBAD78 /* TravelTests.swift */; };
+		B27D883D1FFC305100EBAD78 /* BookingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D883C1FFC305100EBAD78 /* BookingCell.swift */; };
+		B27D88421FFC5D9A00EBAD78 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B27D88411FFC5D9A00EBAD78 /* MapKit.framework */; };
+		B27D88441FFCFD0700EBAD78 /* CalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27D88431FFCFD0700EBAD78 /* CalendarTests.swift */; };
+		B28457041FE9D26600343F22 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28457031FE9D26600343F22 /* ChangePasswordViewController.swift */; };
+		B28AE59C1FE16E9F007BD4B7 /* TravelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28AE59B1FE16E9F007BD4B7 /* TravelCell.swift */; };
+		B29EC4E61FDFDF5D0016BF18 /* LocalSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EC4E51FDFDF5D0016BF18 /* LocalSearchViewController.swift */; };
+		B29EC4E81FDFE8210016BF18 /* LocationSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EC4E71FDFE8210016BF18 /* LocationSearchTableViewController.swift */; };
+		B29ECC781FF7326700001888 /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29ECC771FF7326700001888 /* DayTests.swift */; };
+		B29ECC7A1FF7328200001888 /* AddEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29ECC791FF7328200001888 /* AddEventTests.swift */; };
+		B29ECC7C1FF732A100001888 /* PreferencesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29ECC7B1FF732A100001888 /* PreferencesTests.swift */; };
+		B29ECC7E1FF732B600001888 /* SettingsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29ECC7D1FF732B600001888 /* SettingsTest.swift */; };
+		B2B439591FD8C45400B5C1EA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B2B439581FD8C45300B5C1EA /* SWRevealViewController.m */; };
+		B2CE10B51FF6827E00D47CDD /* LogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CE10B41FF6827D00D47CDD /* LogTests.swift */; };
+		B2E860FF1FE2E2E600045E6D /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2E860FE1FE2E2E600045E6D /* Booking.swift */; };
+		F90F2B8F4699EEA72874CE52 /* Pods_Trav_TravTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F507721728B94DD81A98AA17 /* Pods_Trav_TravTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B26EDC3D1FD7713B0026CCC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B26EDC201FD7713B0026CCC6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B26EDC271FD7713B0026CCC6;
+			remoteInfo = Trav;
+		};
+		B26EDC481FD7713B0026CCC6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B26EDC201FD7713B0026CCC6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B26EDC271FD7713B0026CCC6;
+			remoteInfo = Trav;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		025EB6438F24DF6D8B83B2F1 /* Pods-Trav-TravUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trav-TravUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trav-TravUITests/Pods-Trav-TravUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		270CC77BC0E91AC97DB9004B /* Pods-Trav-TravUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trav-TravUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trav-TravUITests/Pods-Trav-TravUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3300C2C33A323DE07293C217 /* Pods_Trav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2136B7C1FE1AA2600EC7B16 /* Pods_Trav.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Trav.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21D17491FDEB85B00A5A169 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		B21D174B1FDEB88A00A5A169 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B21D174D1FDEB8B700A5A169 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		B21D17511FDEC48D00A5A169 /* BookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewController.swift; sourceTree = "<group>"; };
+		B21D17531FDEC49B00A5A169 /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
+		B22D76521FDC0A5100D1D5B8 /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		B22D76541FDC14D800D1D5B8 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		B23B41891FE2A8A00051D2DC /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B23B418B1FE2A8AE0051D2DC /* Travel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Travel.swift; sourceTree = "<group>"; };
+		B24317F91FD8E844002A25D5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		B24317FB1FD8E860002A25D5 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		B24317FD1FD9A157002A25D5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B24317FF1FDA18FB002A25D5 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		B24318031FDA1A57002A25D5 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B24318051FDA1A68002A25D5 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		B24318071FDA1DF3002A25D5 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		B24318091FDAC291002A25D5 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		B24BB3D11FD8C96700AF7765 /* DayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayViewController.swift; sourceTree = "<group>"; };
+		B2521AA71FFF9ABD0056A370 /* ChangePasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordTests.swift; sourceTree = "<group>"; };
+		B26EDC281FD7713B0026CCC6 /* Trav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Trav.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26EDC2B1FD7713B0026CCC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B26EDC301FD7713B0026CCC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B26EDC321FD7713B0026CCC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B26EDC371FD7713B0026CCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B26EDC3C1FD7713B0026CCC6 /* TravTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26EDC421FD7713B0026CCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B26EDC471FD7713B0026CCC6 /* TravUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B26EDC4B1FD7713B0026CCC6 /* TravUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravUITests.swift; sourceTree = "<group>"; };
+		B26EDC4D1FD7713B0026CCC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B26EDC591FD77BD00026CCC6 /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
+		B26EDC5B1FD812200026CCC6 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		B27D88381FFBFB1A00EBAD78 /* TravelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTests.swift; sourceTree = "<group>"; };
+		B27D883C1FFC305100EBAD78 /* BookingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingCell.swift; sourceTree = "<group>"; };
+		B27D88401FFC5D6100EBAD78 /* Trav.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Trav.entitlements; sourceTree = "<group>"; };
+		B27D88411FFC5D9A00EBAD78 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B27D88431FFCFD0700EBAD78 /* CalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTests.swift; sourceTree = "<group>"; };
+		B28457031FE9D26600343F22 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		B28AE59B1FE16E9F007BD4B7 /* TravelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelCell.swift; sourceTree = "<group>"; };
+		B29EC4E51FDFDF5D0016BF18 /* LocalSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSearchViewController.swift; sourceTree = "<group>"; };
+		B29EC4E71FDFE8210016BF18 /* LocationSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTableViewController.swift; sourceTree = "<group>"; };
+		B29ECC771FF7326700001888 /* DayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
+		B29ECC791FF7328200001888 /* AddEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventTests.swift; sourceTree = "<group>"; };
+		B29ECC7B1FF732A100001888 /* PreferencesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTests.swift; sourceTree = "<group>"; };
+		B29ECC7D1FF732B600001888 /* SettingsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTest.swift; sourceTree = "<group>"; };
+		B2B439561FD8C45300B5C1EA /* Trav-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Trav-Bridging-Header.h"; sourceTree = "<group>"; };
+		B2B439571FD8C45300B5C1EA /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		B2B439581FD8C45300B5C1EA /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		B2CE10B41FF6827D00D47CDD /* LogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTests.swift; sourceTree = "<group>"; };
+		B2E860FE1FE2E2E600045E6D /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		B8B0C8D5E0FD4C39E311B9F2 /* Pods-Trav.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trav.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trav/Pods-Trav.debug.xcconfig"; sourceTree = "<group>"; };
+		BF61BCD5AFAA4E7C9DD2C994 /* Pods-Trav.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trav.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trav/Pods-Trav.release.xcconfig"; sourceTree = "<group>"; };
+		C7E5F0BECAEAB27898843823 /* Pods-Trav-TravTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trav-TravTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Trav-TravTests/Pods-Trav-TravTests.release.xcconfig"; sourceTree = "<group>"; };
+		DC5B2F80E47AD4E4B18D4FF4 /* Pods_Trav_TravUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trav_TravUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF49ABB6C502E365DFEE214A /* Pods-Trav-TravTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Trav-TravTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Trav-TravTests/Pods-Trav-TravTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F507721728B94DD81A98AA17 /* Pods_Trav_TravTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Trav_TravTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B26EDC251FD7713B0026CCC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B27D88421FFC5D9A00EBAD78 /* MapKit.framework in Frameworks */,
+				B2136B7B1FE1AA2600EC7B16 /* Pods_Trav.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26EDC391FD7713B0026CCC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F90F2B8F4699EEA72874CE52 /* Pods_Trav_TravTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26EDC441FD7713B0026CCC6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				37C24633640FE84F9E34DCA3 /* Pods_Trav_TravUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7EEE35F70189B9F7B0489355 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B27D88411FFC5D9A00EBAD78 /* MapKit.framework */,
+				B2136B7C1FE1AA2600EC7B16 /* Pods_Trav.framework */,
+				3300C2C33A323DE07293C217 /* Pods_Trav.framework */,
+				F507721728B94DD81A98AA17 /* Pods_Trav_TravTests.framework */,
+				DC5B2F80E47AD4E4B18D4FF4 /* Pods_Trav_TravUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B21D17471FDEB76700A5A169 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B21D17491FDEB85B00A5A169 /* Day.swift */,
+				B23B41891FE2A8A00051D2DC /* Event.swift */,
+				B2E860FE1FE2E2E600045E6D /* Booking.swift */,
+				B23B418B1FE2A8AE0051D2DC /* Travel.swift */,
+				B21D174B1FDEB88A00A5A169 /* User.swift */,
+				B21D174D1FDEB8B700A5A169 /* Preferences.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B21D17481FDEB78C00A5A169 /* Cells Table Views */ = {
+			isa = PBXGroup;
+			children = (
+				B22D76541FDC14D800D1D5B8 /* EventCell.swift */,
+				B28AE59B1FE16E9F007BD4B7 /* TravelCell.swift */,
+				B24318091FDAC291002A25D5 /* CalendarCell.swift */,
+				B27D883C1FFC305100EBAD78 /* BookingCell.swift */,
+			);
+			path = "Cells Table Views";
+			sourceTree = "<group>";
+		};
+		B24318011FDA1918002A25D5 /* Side Menu View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B24317F91FD8E844002A25D5 /* MenuViewController.swift */,
+				B24317FB1FD8E860002A25D5 /* MenuTableViewCell.swift */,
+				B2B439571FD8C45300B5C1EA /* SWRevealViewController.h */,
+				B2B439581FD8C45300B5C1EA /* SWRevealViewController.m */,
+			);
+			path = "Side Menu View Controllers";
+			sourceTree = "<group>";
+		};
+		B24318021FDA1984002A25D5 /* Navigation View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B24BB3D11FD8C96700AF7765 /* DayViewController.swift */,
+				B24318031FDA1A57002A25D5 /* CalendarViewController.swift */,
+				B24318051FDA1A68002A25D5 /* PreferencesViewController.swift */,
+				B24317FD1FD9A157002A25D5 /* SettingsViewController.swift */,
+				B24317FF1FDA18FB002A25D5 /* CreditsViewController.swift */,
+			);
+			path = "Navigation View Controllers";
+			sourceTree = "<group>";
+		};
+		B243180B1FDACA7E002A25D5 /* Log View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B26EDC591FD77BD00026CCC6 /* LogViewController.swift */,
+				B26EDC5B1FD812200026CCC6 /* SignUpViewController.swift */,
+				B24318071FDA1DF3002A25D5 /* StartViewController.swift */,
+			);
+			path = "Log View Controllers";
+			sourceTree = "<group>";
+		};
+		B2521AA920011DEA0056A370 /* Booking View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B21D17511FDEC48D00A5A169 /* BookingViewController.swift */,
+			);
+			path = "Booking View Controllers";
+			sourceTree = "<group>";
+		};
+		B2521AAA20011E070056A370 /* Event-related View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B21D17531FDEC49B00A5A169 /* TravelViewController.swift */,
+				B22D76521FDC0A5100D1D5B8 /* AddEventViewController.swift */,
+			);
+			path = "Event-related View Controllers";
+			sourceTree = "<group>";
+		};
+		B2521AAB20011EB10056A370 /* Settings View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B28457031FE9D26600343F22 /* ChangePasswordViewController.swift */,
+			);
+			path = "Settings View Controllers";
+			sourceTree = "<group>";
+		};
+		B26EDC1F1FD7713B0026CCC6 = {
+			isa = PBXGroup;
+			children = (
+				B26EDC2A1FD7713B0026CCC6 /* Trav */,
+				B26EDC3F1FD7713B0026CCC6 /* TravTests */,
+				B26EDC4A1FD7713B0026CCC6 /* TravUITests */,
+				B26EDC291FD7713B0026CCC6 /* Products */,
+				E63B48FF6C754C33BF8265BA /* Pods */,
+				7EEE35F70189B9F7B0489355 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B26EDC291FD7713B0026CCC6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B26EDC281FD7713B0026CCC6 /* Trav.app */,
+				B26EDC3C1FD7713B0026CCC6 /* TravTests.xctest */,
+				B26EDC471FD7713B0026CCC6 /* TravUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B26EDC2A1FD7713B0026CCC6 /* Trav */ = {
+			isa = PBXGroup;
+			children = (
+				B27D88401FFC5D6100EBAD78 /* Trav.entitlements */,
+				B21D17471FDEB76700A5A169 /* Model */,
+				B243180B1FDACA7E002A25D5 /* Log View Controllers */,
+				B24318011FDA1918002A25D5 /* Side Menu View Controllers */,
+				B24318021FDA1984002A25D5 /* Navigation View Controllers */,
+				B2521AAA20011E070056A370 /* Event-related View Controllers */,
+				B2521AA920011DEA0056A370 /* Booking View Controllers */,
+				B2521AAB20011EB10056A370 /* Settings View Controllers */,
+				B21D17481FDEB78C00A5A169 /* Cells Table Views */,
+				B2B183DB1FE0ACE600EDB926 /* Location View Controllers */,
+				B26EDC2F1FD7713B0026CCC6 /* Main.storyboard */,
+				B2B439561FD8C45300B5C1EA /* Trav-Bridging-Header.h */,
+				B26EDC2B1FD7713B0026CCC6 /* AppDelegate.swift */,
+				B26EDC321FD7713B0026CCC6 /* Assets.xcassets */,
+				B26EDC371FD7713B0026CCC6 /* Info.plist */,
+			);
+			path = Trav;
+			sourceTree = "<group>";
+		};
+		B26EDC3F1FD7713B0026CCC6 /* TravTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2CE10B41FF6827D00D47CDD /* LogTests.swift */,
+				B27D88381FFBFB1A00EBAD78 /* TravelTests.swift */,
+				B29ECC771FF7326700001888 /* DayTests.swift */,
+				B27D88431FFCFD0700EBAD78 /* CalendarTests.swift */,
+				B29ECC791FF7328200001888 /* AddEventTests.swift */,
+				B2521AA71FFF9ABD0056A370 /* ChangePasswordTests.swift */,
+				B29ECC7B1FF732A100001888 /* PreferencesTests.swift */,
+				B29ECC7D1FF732B600001888 /* SettingsTest.swift */,
+				B26EDC421FD7713B0026CCC6 /* Info.plist */,
+			);
+			path = TravTests;
+			sourceTree = "<group>";
+		};
+		B26EDC4A1FD7713B0026CCC6 /* TravUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B26EDC4B1FD7713B0026CCC6 /* TravUITests.swift */,
+				B26EDC4D1FD7713B0026CCC6 /* Info.plist */,
+			);
+			path = TravUITests;
+			sourceTree = "<group>";
+		};
+		B2B183DB1FE0ACE600EDB926 /* Location View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B29EC4E71FDFE8210016BF18 /* LocationSearchTableViewController.swift */,
+				B29EC4E51FDFDF5D0016BF18 /* LocalSearchViewController.swift */,
+			);
+			path = "Location View Controllers";
+			sourceTree = "<group>";
+		};
+		E63B48FF6C754C33BF8265BA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B8B0C8D5E0FD4C39E311B9F2 /* Pods-Trav.debug.xcconfig */,
+				BF61BCD5AFAA4E7C9DD2C994 /* Pods-Trav.release.xcconfig */,
+				DF49ABB6C502E365DFEE214A /* Pods-Trav-TravTests.debug.xcconfig */,
+				C7E5F0BECAEAB27898843823 /* Pods-Trav-TravTests.release.xcconfig */,
+				025EB6438F24DF6D8B83B2F1 /* Pods-Trav-TravUITests.debug.xcconfig */,
+				270CC77BC0E91AC97DB9004B /* Pods-Trav-TravUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B26EDC271FD7713B0026CCC6 /* Trav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B26EDC501FD7713B0026CCC6 /* Build configuration list for PBXNativeTarget "Trav" */;
+			buildPhases = (
+				78CAF4F91B6D0BCDBC1CB9BB /* [CP] Check Pods Manifest.lock */,
+				B26EDC241FD7713B0026CCC6 /* Sources */,
+				B26EDC251FD7713B0026CCC6 /* Frameworks */,
+				B26EDC261FD7713B0026CCC6 /* Resources */,
+				FE61684F1BBCC5650C5A228B /* [CP] Embed Pods Frameworks */,
+				1845CC163488E2D485CE0C4C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Trav;
+			productName = Trav;
+			productReference = B26EDC281FD7713B0026CCC6 /* Trav.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B26EDC3B1FD7713B0026CCC6 /* TravTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B26EDC531FD7713B0026CCC6 /* Build configuration list for PBXNativeTarget "TravTests" */;
+			buildPhases = (
+				FA3FCD5D98D8D646EDB432B6 /* [CP] Check Pods Manifest.lock */,
+				B26EDC381FD7713B0026CCC6 /* Sources */,
+				B26EDC391FD7713B0026CCC6 /* Frameworks */,
+				B26EDC3A1FD7713B0026CCC6 /* Resources */,
+				C15407E8E14086386541BC78 /* [CP] Embed Pods Frameworks */,
+				04464508FB89F6090FCF9E4A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B26EDC3E1FD7713B0026CCC6 /* PBXTargetDependency */,
+			);
+			name = TravTests;
+			productName = TravTests;
+			productReference = B26EDC3C1FD7713B0026CCC6 /* TravTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B26EDC461FD7713B0026CCC6 /* TravUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B26EDC561FD7713B0026CCC6 /* Build configuration list for PBXNativeTarget "TravUITests" */;
+			buildPhases = (
+				1C5487E1FA6ABDCF58CBC3D5 /* [CP] Check Pods Manifest.lock */,
+				B26EDC431FD7713B0026CCC6 /* Sources */,
+				B26EDC441FD7713B0026CCC6 /* Frameworks */,
+				B26EDC451FD7713B0026CCC6 /* Resources */,
+				C3951CC1800F4552D9A389C4 /* [CP] Embed Pods Frameworks */,
+				4B662A8733E5E7599214A55C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B26EDC491FD7713B0026CCC6 /* PBXTargetDependency */,
+			);
+			name = TravUITests;
+			productName = TravUITests;
+			productReference = B26EDC471FD7713B0026CCC6 /* TravUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B26EDC201FD7713B0026CCC6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = "Tommaso Scarlatti";
+				TargetAttributes = {
+					B26EDC271FD7713B0026CCC6 = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0920;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					B26EDC3B1FD7713B0026CCC6 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B26EDC271FD7713B0026CCC6;
+					};
+					B26EDC461FD7713B0026CCC6 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B26EDC271FD7713B0026CCC6;
+					};
+				};
+			};
+			buildConfigurationList = B26EDC231FD7713B0026CCC6 /* Build configuration list for PBXProject "Trav" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B26EDC1F1FD7713B0026CCC6;
+			productRefGroup = B26EDC291FD7713B0026CCC6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B26EDC271FD7713B0026CCC6 /* Trav */,
+				B26EDC3B1FD7713B0026CCC6 /* TravTests */,
+				B26EDC461FD7713B0026CCC6 /* TravUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B26EDC261FD7713B0026CCC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26EDC331FD7713B0026CCC6 /* Assets.xcassets in Resources */,
+				B26EDC311FD7713B0026CCC6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26EDC3A1FD7713B0026CCC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26EDC451FD7713B0026CCC6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04464508FB89F6090FCF9E4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trav-TravTests/Pods-Trav-TravTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1845CC163488E2D485CE0C4C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trav/Pods-Trav-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1C5487E1FA6ABDCF58CBC3D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trav-TravUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4B662A8733E5E7599214A55C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trav-TravUITests/Pods-Trav-TravUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		78CAF4F91B6D0BCDBC1CB9BB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trav-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C15407E8E14086386541BC78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Trav-TravTests/Pods-Trav-TravTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/UberCore/UberCore.framework",
+				"${BUILT_PRODUCTS_DIR}/UberRides/UberRides.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UberCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UberRides.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trav-TravTests/Pods-Trav-TravTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3951CC1800F4552D9A389C4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Trav-TravUITests/Pods-Trav-TravUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/UberCore/UberCore.framework",
+				"${BUILT_PRODUCTS_DIR}/UberRides/UberRides.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UberCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UberRides.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trav-TravUITests/Pods-Trav-TravUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA3FCD5D98D8D646EDB432B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Trav-TravTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE61684F1BBCC5650C5A228B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Trav/Pods-Trav-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/UberCore/UberCore.framework",
+				"${BUILT_PRODUCTS_DIR}/UberRides/UberRides.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UberCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UberRides.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Trav/Pods-Trav-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B26EDC241FD7713B0026CCC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B24318041FDA1A57002A25D5 /* CalendarViewController.swift in Sources */,
+				B28AE59C1FE16E9F007BD4B7 /* TravelCell.swift in Sources */,
+				B26EDC5C1FD812200026CCC6 /* SignUpViewController.swift in Sources */,
+				B21D174A1FDEB85B00A5A169 /* Day.swift in Sources */,
+				B24317FC1FD8E860002A25D5 /* MenuTableViewCell.swift in Sources */,
+				B23B418A1FE2A8A00051D2DC /* Event.swift in Sources */,
+				B24BB3D21FD8C96700AF7765 /* DayViewController.swift in Sources */,
+				B24317FA1FD8E844002A25D5 /* MenuViewController.swift in Sources */,
+				B24318081FDA1DF3002A25D5 /* StartViewController.swift in Sources */,
+				B21D174C1FDEB88A00A5A169 /* User.swift in Sources */,
+				B2E860FF1FE2E2E600045E6D /* Booking.swift in Sources */,
+				B21D174E1FDEB8B700A5A169 /* Preferences.swift in Sources */,
+				B21D17541FDEC49B00A5A169 /* TravelViewController.swift in Sources */,
+				B28457041FE9D26600343F22 /* ChangePasswordViewController.swift in Sources */,
+				B26EDC2C1FD7713B0026CCC6 /* AppDelegate.swift in Sources */,
+				B22D76551FDC14D900D1D5B8 /* EventCell.swift in Sources */,
+				B26EDC5A1FD77BD00026CCC6 /* LogViewController.swift in Sources */,
+				B27D883D1FFC305100EBAD78 /* BookingCell.swift in Sources */,
+				B2B439591FD8C45400B5C1EA /* SWRevealViewController.m in Sources */,
+				B24317FE1FD9A157002A25D5 /* SettingsViewController.swift in Sources */,
+				B29EC4E61FDFDF5D0016BF18 /* LocalSearchViewController.swift in Sources */,
+				B23B418C1FE2A8AE0051D2DC /* Travel.swift in Sources */,
+				B24318001FDA18FB002A25D5 /* CreditsViewController.swift in Sources */,
+				B22D76531FDC0A5100D1D5B8 /* AddEventViewController.swift in Sources */,
+				B29EC4E81FDFE8210016BF18 /* LocationSearchTableViewController.swift in Sources */,
+				B243180A1FDAC291002A25D5 /* CalendarCell.swift in Sources */,
+				B21D17521FDEC48D00A5A169 /* BookingViewController.swift in Sources */,
+				B24318061FDA1A68002A25D5 /* PreferencesViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26EDC381FD7713B0026CCC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B29ECC7A1FF7328200001888 /* AddEventTests.swift in Sources */,
+				B29ECC781FF7326700001888 /* DayTests.swift in Sources */,
+				B2CE10B51FF6827E00D47CDD /* LogTests.swift in Sources */,
+				B27D88441FFCFD0700EBAD78 /* CalendarTests.swift in Sources */,
+				B29ECC7C1FF732A100001888 /* PreferencesTests.swift in Sources */,
+				B2521AA81FFF9ABD0056A370 /* ChangePasswordTests.swift in Sources */,
+				B29ECC7E1FF732B600001888 /* SettingsTest.swift in Sources */,
+				B27D88391FFBFB1A00EBAD78 /* TravelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B26EDC431FD7713B0026CCC6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B26EDC4C1FD7713B0026CCC6 /* TravUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B26EDC3E1FD7713B0026CCC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B26EDC271FD7713B0026CCC6 /* Trav */;
+			targetProxy = B26EDC3D1FD7713B0026CCC6 /* PBXContainerItemProxy */;
+		};
+		B26EDC491FD7713B0026CCC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B26EDC271FD7713B0026CCC6 /* Trav */;
+			targetProxy = B26EDC481FD7713B0026CCC6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B26EDC2F1FD7713B0026CCC6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B26EDC301FD7713B0026CCC6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B26EDC4E1FD7713B0026CCC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B26EDC4F1FD7713B0026CCC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B26EDC511FD7713B0026CCC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8B0C8D5E0FD4C39E311B9F2 /* Pods-Trav.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Trav/Trav.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6XZQV2VJL;
+				INFOPLIST_FILE = Trav/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tms.Trav;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Trav/Trav-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B26EDC521FD7713B0026CCC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF61BCD5AFAA4E7C9DD2C994 /* Pods-Trav.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Trav/Trav.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6XZQV2VJL;
+				INFOPLIST_FILE = Trav/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tms.Trav;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Trav/Trav-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B26EDC541FD7713B0026CCC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF49ABB6C502E365DFEE214A /* Pods-Trav-TravTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6XZQV2VJL;
+				INFOPLIST_FILE = TravTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tms.TravTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trav.app/Trav";
+			};
+			name = Debug;
+		};
+		B26EDC551FD7713B0026CCC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7E5F0BECAEAB27898843823 /* Pods-Trav-TravTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6XZQV2VJL;
+				INFOPLIST_FILE = TravTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tms.TravTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Trav.app/Trav";
+			};
+			name = Release;
+		};
+		B26EDC571FD7713B0026CCC6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 025EB6438F24DF6D8B83B2F1 /* Pods-Trav-TravUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6XZQV2VJL;
+				INFOPLIST_FILE = TravUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tms.TravUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Trav;
+			};
+			name = Debug;
+		};
+		B26EDC581FD7713B0026CCC6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270CC77BC0E91AC97DB9004B /* Pods-Trav-TravUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X6XZQV2VJL;
+				INFOPLIST_FILE = TravUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tms.TravUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Trav;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B26EDC231FD7713B0026CCC6 /* Build configuration list for PBXProject "Trav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26EDC4E1FD7713B0026CCC6 /* Debug */,
+				B26EDC4F1FD7713B0026CCC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B26EDC501FD7713B0026CCC6 /* Build configuration list for PBXNativeTarget "Trav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26EDC511FD7713B0026CCC6 /* Debug */,
+				B26EDC521FD7713B0026CCC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B26EDC531FD7713B0026CCC6 /* Build configuration list for PBXNativeTarget "TravTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26EDC541FD7713B0026CCC6 /* Debug */,
+				B26EDC551FD7713B0026CCC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B26EDC561FD7713B0026CCC6 /* Build configuration list for PBXNativeTarget "TravUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B26EDC571FD7713B0026CCC6 /* Debug */,
+				B26EDC581FD7713B0026CCC6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B26EDC201FD7713B0026CCC6 /* Project object */;
+}

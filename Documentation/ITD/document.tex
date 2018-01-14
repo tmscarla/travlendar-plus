@@ -1,0 +1,64 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+
+% hyperref
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref}  % PDF hyperlinks, with coloured links
+\hypersetup{linkcolor=black, citecolor=black, filecolor=black, urlcolor=black} % black links, for printed output
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{ltablex}
+\graphicspath{ {img/} }
+\usepackage[]{algorithm2e}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings,xcolor}
+\usepackage{makecell}
+\usepackage{hyperref}
+
+\begin{document}
+
+\lstset{
+	string=[s]{"}{"},
+	stringstyle=\color{blue},
+	comment=[l]{:},
+	commentstyle=\color{black},
+}
+
+\title{Software Engineering 2\\ \vspace{1em}  {\textbf{Travlendar+}} \\ \vspace{1em} \textbf{I}mplementation and \textbf{T}esting \textbf{D}ocument
+	\vspace{1.5em}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{logo}
+\end{figure}
+}
+\author{Menchetti Guglielmo\\ Norcini Lorenzo \\ Scarlatti Tommaso}
+
+\date{January 07, 2018}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+\input{sections/introduction}
+
+\newpage
+\input{sections/implemented_requirements}
+\newpage
+\input{sections/frameworks}
+\newpage
+\input{sections/model_description}
+\newpage
+\input{sections/testing}
+\newpage
+\input{sections/api_description}
+\newpage
+\input{sections/effort_spent}
+
+
+\newpage
+\appendix
+\end{document}

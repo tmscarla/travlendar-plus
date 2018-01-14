@@ -1,0 +1,182 @@
+\section{Implemented requirements}
+
+In this section we describe the implemented functionalities with reference to the requirements outlined in the RASD document.\\
+The requirement with their reference number green are the ones available in the current implementation, the others are in red.
+
+\subsection{Registration}
+\begin{itemize}
+	\item {\color{OliveGreen}\textbf{[R.1]}} A Guest must be able to register. During the registration the System will ask to provide credentials.
+	\item {\color{OliveGreen}\textbf{[R.2]}} The System must check if the Guest credentials are valid.
+	\item {\color{OliveGreen}\textbf{[R.3]}} The System must store all User credentials.
+\end{itemize}
+\subsubsection*{Database}
+The database stores the User information and credentials inside the table denominated 'users'.\\
+Passwords are stored as salted hashes for security purposes.
+
+\subsubsection*{Back-end}
+The Create User API [\ref{registrationapi}] handles the registration process validating the provided data and handling communication with the database. A confirmation e-mail is sent to verify the validity of the mail address. 
+
+\subsubsection*{Front-end}
+The homepage of the client application for a Guest contains a registration section showing a form to fill with registration information. The client application validates the information, performs the request to the server and shows the response.
+
+
+\subsection{Login}
+\begin{itemize}
+	\item {\color{OliveGreen}\textbf{[R.4]}} The System must allow the User to log in using his/her
+	personal credentials.
+\end{itemize}
+\subsubsection*{Database}
+The database stores the authentication tokens and client tokens in tables created by the Passport library for this purpose.
+
+\subsubsection*{Back-end}
+The Login API [\ref{loginapi}] is managed by the Passport library and allows a registered User to obtain an OAuth token to authenticate future requests.
+
+\subsubsection*{Front-end}
+The homepage of the application contains (if the User is not logged in) a login form. The client application validates the information, performs the request to the server and shows the response.
+
+
+\subsection{User management}
+\begin{itemize}
+\item {\color{OliveGreen}\textbf{[R.5]}} The System must allow the User to change personal credentials. 
+\item {\color{OliveGreen}\textbf{[R.20]}} The System allows the User to define specific constraint for each travel means.
+\item {\color{red}\textbf{[R.6]}} The System must send a confirmation email if username, email or password is changed.
+\end{itemize}
+
+\subsubsection*{Database}
+The database stores the User information and credentials inside the table denominated 'users'.
+
+\subsubsection*{Back-end}
+The Update User API [\ref{edituserapi}] and the Update Preferences API [\ref{editpereferencesapi}] validate the request and allow to edit the User preferences and change the password.\\
+In the current implementation no confirmation is required in order to perform these changes.
+
+\subsubsection*{Front-end}
+The client application provides two sections (accessible by the side bar menu) named 'Settings' and 'Preferences' that allow respectively to change User information and set Travel preferences. In both cases the client application validates the information, performs the request to the server and shows the response.
+
+\subsection{Event creation}
+\begin{itemize}
+\item {\color{OliveGreen}\textbf{[R.7]}} The User must be allowed to create events, specifying all the mandatory fields.
+\item {\color{OliveGreen}\textbf{[R.9]}} The System allows the User to provide optional event information: membership category and a brief description. 
+\item {\color{OliveGreen}\textbf{[R.12]}} The System must prompt the User to specify the location from which a certain event will be reached. 
+\item {\color{OliveGreen}\textbf{[R.16]}} The System must allow the User to select a specific event.
+\item {\color{OliveGreen}\textbf{[R.22]}} The System must allow the User to select the Eco Mode in order to minimize carbon footprint.
+\item {\color{OliveGreen}\textbf{[R.24]}} The System must allow the User to create repetitive events. 
+\item {\color{OliveGreen}\textbf{[R.23]}} The System must allow the User to create flexible events 
+\item {\color{red}\textbf{[R.27]}} The System must allow the User to select a travel mean for a repetitive event only for a specific day after its creation.
+\end{itemize}
+
+\subsubsection*{Database}
+The database stores the Event and Travel information in the tables the following tables: 'events', 'travels', 'flexibleEvent', 'repetitiveEvent'.
+
+\subsubsection*{Back-end}
+The Create Event API [\ref{createeventapi}] allows the creation of repetitive, flexible or standard Events with or without defining an associated Travel.
+It also provide validation of the input parameters.
+In the current implementation the Travel option for a repetitive Event is chosen once and applied globally for all repetitions.
+
+\subsubsection*{Front-end}
+In the section page relative to a specific day, the application has a '+' button that allows to create a new Event.\\
+This button open the Event creation page where all the details of the Event can be specified.
+Again the client application validates the information, performs the request to the server and shows the response.
+
+\subsection{Travel}
+\begin{itemize}
+	\item {\color{OliveGreen}\textbf{[R.13]}} The System must compute travel time between appointments.
+\end{itemize}
+
+\subsubsection*{Database}
+The database stores the Event and Travel information in the tables the following tables: 'events', 'travels', 'flexibleEvent', 'repetitiveEvent'.
+
+\subsubsection*{Back-end}
+The Create Event API [\ref{getenerateapi}] returns a list of the Travel options available to reach an Event from a specified location.
+
+\subsubsection*{Front-end}
+Inside the Event creation section the User may activate the Travel section.
+After specifying the start location, the User will be prompted to choose one of the available options.
+
+\subsection{Event visualization}
+\begin{itemize}
+	\item {\color{OliveGreen}\textbf{[R.10]}} The System must allow the User to view all the events for a specific day.
+	\item {\color{OliveGreen}\textbf{[R.16]}} The System must allow the User to select a specific event.
+\end{itemize}
+
+\subsubsection*{Database}
+The database stores the Event and Travel information in the tables the following tables: 'events', 'travels', 'flexibleEvent', 'repetitiveEvent'.
+
+\subsubsection*{Back-end}
+The Get Event API [\ref{geteventapi}] and Get Schedule API[\ref{getscheduleapi}] return respectively information about a single Event and information about all the Events within a specified time frame.
+It also provides validation of the input parameters.
+
+\subsubsection*{Front-end}
+In the 'calendar' section(accessible by the side bar menu), days with at least one Event are marked with a dot.
+Selecting a specific day will show the list of that day's Events.
+
+\subsection{Event deletion}
+\begin{itemize}
+	\item {\color{OliveGreen}\textbf{[R.8]}}{\color{red}\textbf{[R.8]}} The User must be allowed to edit or delete a specific event in his/her schedule.
+\end{itemize}
+
+\subsubsection*{Database}
+The database stores the Event and Travel information in the tables the following tables: 'events', 'travels', 'flexibleEvent', 'repetitiveEvent'.
+
+\subsubsection*{Back-end}
+The Delete Event API [\ref{deleteeventapi}] allows to delete an Event.
+In the current implementation the editing of an event is not supported.
+
+\subsubsection*{Front-end}
+The delete button is accessible swiping left on an Event.
+Tapping on the event will open the editing page, though at the moment the User is not allowed to apply the changes.
+
+\subsection{Valid Event Generation}
+\begin{itemize}
+	\item {\color{OliveGreen}\textbf{[R.13]}} The System must compute travel time between appointments.
+	\item {\color{OliveGreen}\textbf{[R.14]}} The System must guarantee a feasible schedule, that is, the User is able to move from an appointment to another in time.
+\end{itemize}
+
+\subsubsection*{Back-end}
+The Create Event API [\ref{getenerateapi}] returns the available Travel options obtained from various external services. To each option is associated a set of adjustments to the schedule in order to make is feasible, such adjustments are computed by solving the CSP problem associated with the schedule.\\
+In computing these adjustments we take into account travel time and the eventual flexibility of Events.
+
+\subsection{Feasibility check}
+
+\subsection{Valid Event Generation}
+\begin{itemize}
+\item {\color{OliveGreen}\textbf{[R.11]}} The System must check if the event created or edited by the User is feasible.
+\item {\color{OliveGreen}\textbf{[R.15]}} The System allows the User to add or edit an event only if it’s not in conflict with other events already existent.
+\item {\color{OliveGreen}\textbf{[R.25]}} The System must check the feasibility of flexible events.
+\item {\color{Red}\textbf{[R.26]}} The System must check the repetitive events. The System must warn the User in case of conflicts for some of the day specified: the User will be allowed to add the event only in the day with no conflicts or to discard the event creation.
+\end{itemize}
+
+\subsubsection*{Back-end}
+During the Event creation process several consistency checks are preformed.
+The creation fails in case there is a conflict with the events of the schedule, or in case of other logical errors (e.g. an Event that ends before it starts).\\
+In the current implementation in case of conflict the whole repetitive Event is discarded.
+
+\subsubsection*{Front-end}
+The application will show an alert in case a feasibility check fails.
+
+\subsection{Notification}
+\begin{itemize}
+\item {\color{red}\textbf{[R.21]}} The System must allow the User to be notified a specific time before any event.
+\item {\color{red}\textbf{[R.30]}} The System must allow to activate notification and setting its time. 
+\item {\color{red}\textbf{[R.31]}} The System must activate a ring at the time selected by the User.
+\end{itemize}
+
+\subsubsection*{Front-end}
+In the current implementation the notification function is disabled due to an issue with the client side platform.\\
+The use the Push Notification functionalities available in the iOS development kit requires a certified Apple developer account.
+
+\subsection{Booking}
+\begin{itemize}
+\item {\color{OliveGreen}\textbf{[R.28]}} The System must allow the User to select a specific travel means.
+\item {\color{OliveGreen}\textbf{[R.29]}} The System must provide an interface for third party services allowing the User to authenticate with the service.
+\end{itemize}
+
+\subsubsection*{Database}
+The Database stores information concerning the booking in the 'bookings' table. At each entry of this table is associate one of the travels of the User: the 'bookingId' of the 'events' table correspond to an 'id' field of the 'bookings' table.
+
+\subsubsection*{Back-end}
+After the Event creation process, in which the User created an Event with a specific travel mean, the User is allowed to request information concerning available booking options. In the current implementation, the booking service is only provided for the taxi service, through the use of Uber external service.
+
+\subsubsection*{Front-end}
+The book button is accessible swiping left on an Event. 
+The User will be prompted to choose one of the options available.
+The outcome of the booking will be shown in an alert.

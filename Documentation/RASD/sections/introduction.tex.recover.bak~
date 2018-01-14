@@ -1,0 +1,109 @@
+\section{Introduction}
+
+The following Requirement Analysis and Specification Documents aims at providing a baseline for project planning and development.
+It illustrates the specifics of the application domain and the relative system in terms of functional requirements, non functional requirements and constraints.
+It describes the components and the system interactions with the external world, also through use cases scenarios.
+A more formal specification of some of the features will be specified with the use of the Alloy language.
+
+This document is intended for developers tasked with the implementation of the system, testers who are involved in requirements validation and project managers that supervise the development process.
+
+\subsection{Purpose}
+
+Travlendar+ is a calendar based application whose goal is to help registered users organize their day by scheduling their appointments and providing the best solutions in terms of mobility.
+
+The application allows the user to create a meeting for a specified time, producing a feedback of feasibility according to the other appointments and providing the user with a list of travel options leveraging information about traffic, weather, and user’s preferences. 
+Once created, events can be modified at any time up to the moment they start.
+Each appointment can be assigned to a specific class (e.g. business, family, personal, etc). 
+The system will produce a warning if a new appointment creates any schedule conflicts, for instance if the time overlaps with another meeting or if the location is not reachable on time;
+if this occurs the user won't be allowed to create the event.
+
+Travlendar+ implements a notification system.
+The user may chose whether to be notified a certain time before the event or not.
+
+A user may express his preferences and constraints concerning certain means of travel.
+For example, traveling by bicycle or on foot is allowed only on distances shorter than a given threshold, public transport or carpooling, if available, may be preferred to the use of a personal car.
+
+Other than the standard ones, Travlendar+ offers two particular type of events: recurrent and flexible events.
+Once created, recurrent events are scheduled repeatedly with a specified frequency.
+Flexible meetings can be scheduled in a determined window of time and with a specified minimum duration (e.g., going to gym may imply at least 1.30h of training but does not necessarily need to start at a specific time). 
+
+Finally, Travlendar+ provides a booking functionality allowing the user to purchase public transports tickets, reserve a taxi or locate the nearest car or bike of a vehicle sharing service through the use of third party platforms.
+
+\subsection{Scope}
+
+According to the "World and Machine" paradigm [REF!!] we can distinguish the "Machine", which is system to be developed, from the "World", which is portion of the real-world affected by the machine. This separation leads to a classification of the phenomena in three different types, depending on where they occur: \\ \\
+\noindent
+\textbf{World phenomena:}
+\begin{itemize}
+	\item Transport delay: unforeseen circumstances that cause lateness with respect to the computed ETA.
+	\item Weather: weather forecasts the system bases its behavior on, may not be correct.
+	\item Unscheduled appointment: appointments the user either forgot or did not know about in advance.
+	\item Unexpected issues: anything that leads to a delay or even a cancellation of the meetings.
+\end{itemize}
+
+\noindent
+\textbf{Machine phenomena:}
+\begin{itemize}
+	\item API queries: requests for third-party services.
+	\item Feasibility study: the system checks the schedulability of a new event.
+	\item System clock: the system runs its tasks according to its clock.
+	\item DBMS: all operations performed to retrieve/store data.
+\end{itemize}
+
+\noindent
+\textbf{Shared Phenomena:} controlled by the world and observed by the machine or viceversa
+\begin{itemize}
+	\item Manage events: the user can create, modify or delete events.
+	\item Set preferences/constraints: the user customizes his/her travel experience.
+	\item Suggest travel options: provides a user with a list of possible travel means.
+	\item Generate warnings: produce a warning in case of a scheduling conflict.
+	\item Send notifications: alert the user before an event.
+\end{itemize}
+
+
+
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+
+\begin{itemize}
+	\item \textit{Guest:} a user who has to log in (or sign up) and who is not able to access any feature of the application
+	\item \textit{Logged in user:} a registered user who logged in 
+	\item  \textit{Schedule:} the set of the events of a user for a specific day
+	\item \textit{Event, Meeting, Appointment:} different ways to refert to entries in the schedule
+	\item \textit{text}
+\end{itemize}
+
+\subsubsection{Acronyms}
+
+\begin{center}
+	\begin{tabular}{| l | l |}
+		\hline
+		DBMS & DataBase Management System\\
+		HTTPS & Hyper Text Transfer Protocol Secure\\
+		ETA & Estimated Time of Arrival \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsubsection{Abbreviations}
+
+\subsection{Reference Documents}
+\begin{itemize}
+	\item IEEE Standard 830-1998: Recommended Practice for Software Requirements Specifications
+	\item Project assignment specifications
+\end{itemize}
+
+
+\subsection{Overview}
+The rest of the document is organized in this way:
+
+
+
+\begin{itemize}
+	\item \textbf{Overall description:} here we have a general description of the application, focusing on the context of the system and giving further details about shared phenomena. The most relevant functions of the system are also elicited, togheter with the user characteristics. Finally, trought the specifications of consstraints, dependencies and assumptions, we show how the system is integrated in the real world.
+	
+	\item \textbf{Specific requirements:} in this section we provide a full-detailed perspective of all the aspects of the previous section. The main aim is to give a useful item for both designers and testers.
+	
+	 Requirements are fully explained and organized according to their type, and a list of all possible interactions with the system is provided throught use cases and sequence diagrams.
+\end{itemize}

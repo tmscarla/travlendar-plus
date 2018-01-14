@@ -1,0 +1,16 @@
+/* The title of the request button that deep links to the Uber app */
+"Ride there with Uber" = "Uber के साथ राइड करें";
+"Get a ride" = "एक राइड पाएं";
+"Sign in with Uber" = "Uber के साथ साइन इन करें";
+"There was a problem authenticating you." = "आपका प्रमाणन करने में कोई समस्या थी.";
+"The Ride Request Widget encountered a problem." = "राइड अनुरोध विजेट में कोई समस्या आई.";
+"OK" = "ठीक";
+"Done" = "संपन्न हुआ";
+"Try Again" = "पुन: प्रयास करें";
+"Cancel" = "रद्द";
+"The operation you are attempting is not supported on the current device." = "The operation you are attempting is not supported on the current device.";
+"%d min away" = "%d मिनट दूर";
+"%d mins away" = "%d मिनट दूर";
+"%1$@ for %2$@" = "%2$@ के लिए %1$@";
+"Sign In" = "साइन इन करें";
+"Sign Out" = "साइन आउट करें";

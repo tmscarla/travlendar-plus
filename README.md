@@ -89,10 +89,7 @@ Furthermore, an external Mail service is used to send an email to the new regist
 * Mapbox API
 * Uber API
 
-## Authors
+## Other Contributors
 
 * **[Guglielmo Menchetti](https://github.com/gmenchetti)**
 * **[Lorenzo Norcini](https://github.com/LorenzoNorcini)**
-* **[Tommaso Scarlatti](https://github.com/tmscarla)**
-
-## License
